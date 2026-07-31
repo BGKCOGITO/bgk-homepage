@@ -1,0 +1,1 @@
+export default function NotFound(){return <main style={{minHeight:"100vh",display:"grid",placeItems:"center",background:"#05070a",color:"white",textAlign:"center"}}><div><h1 style={{fontSize:80,margin:0,color:"#d9a72f"}}>404</h1><p>요청하신 페이지를 찾을 수 없습니다.</p><a href="/" style={{color:"#f4d37a"}}>홈으로 돌아가기</a></div></main>}
