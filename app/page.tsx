@@ -101,6 +101,11 @@ export default function Home() {
             <p>직접 경험하고 검증한 문제에서 출발한 BGK의 핵심 서비스입니다.</p>
           </div>
 
+          <div className="custom-saas-banner">
+            <div><span>BGK CUSTOM BUSINESS SaaS</span><h3>우리 회사 업무에 맞는 Web · App · PC 프로그램이 필요하신가요?</h3><p>QR 출퇴근, 연차·휴무, 급여·정산, 직원관리, 채팅·공지부터 기업별 맞춤 기능까지 구축합니다.</p></div>
+            <a className="btn primary" href="/business">기업 맞춤 개발 보기</a>
+          </div>
+
           <div className="service-grid">
             <article className="service-card pawu-card">
               <div className="service-top">

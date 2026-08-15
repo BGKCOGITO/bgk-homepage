@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const items = [
   ["회사소개", "#about"],
   ["서비스", "#services"],
+  ["기업 맞춤 개발", "/business"],
   ["미래", "#future"],
   ["대표소개", "#founder"],
   ["비전", "#vision"],
