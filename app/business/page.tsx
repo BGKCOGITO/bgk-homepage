@@ -1,94 +1,173 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import BusinessInquiryForm from "@/components/BusinessInquiryForm";
+import WorkcraftDiagnosis from "@/components/WorkcraftDiagnosis";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "기업 맞춤형 SaaS 개발",
-  description: "엑셀·메신저·수기 업무를 기업에 맞는 Web, App, PC 프로그램으로 구축하는 BGK 기업 맞춤형 SaaS 개발 서비스입니다.",
+  title: "WORKCRAFT | 기업 현장진단·맞춤 시스템 구축",
+  description: "전화로 요구사항을 받지 않습니다. BGK가 현장을 직접 확인한 뒤 Web·App·PC 프로그램과 AI 업무자동화를 설계·구축합니다.",
   alternates: { canonical: "/business" },
 };
 
-const modules = [
-  ["QR 출퇴근", "회사 QR 스캔으로 출근·퇴근 시간 기록과 근무시간 조회"],
-  ["연차·휴무", "연차 생성, 신청, 승인·반려와 직원별 사용 현황 관리"],
-  ["급여·정산", "기본급·인센티브·수당·공제 입력과 월별 정산"],
-  ["급여명세서", "정산 결과를 직원 앱에서 확인할 수 있는 명세서로 제공"],
-  ["직원·권한", "대표·관리자·직원 계정과 역할별 기능 권한 관리"],
-  ["채팅·공지", "업무 채팅, 회사 공지, 파일 전달과 확인"],
-  ["알림", "연차 처리, 공지, 정산 등록 등 주요 업무 알림"],
-  ["통계·리포트", "근태·업무·정산 데이터를 월별 대시보드로 확인"],
-  ["예약·일정", "업종에 맞는 예약, 일정, 배정 및 진행상태 관리"],
-  ["맞춤 기능", "기업의 기존 업무 흐름을 분석해 필요한 기능을 추가 구축"],
+const strengths = [
+  ["현장진단", "대표와 실무자의 실제 업무 흐름을 직접 확인합니다."],
+  ["직접 설계·개발", "기획부터 Web·App·PC 프로그램 구축까지 BGK가 수행합니다."],
+  ["명확한 계약", "최종 견적서와 개발범위서(SOW)로 포함·제외 범위를 문서화합니다."],
+  ["운영까지 책임", "배포 이후 장애 대응, 개선, 추가 개발을 이어갑니다."],
 ];
 
-const plans = [
-  ["WEB", "웹 개발", "390만원~", "관리자 페이지, 사내 업무 시스템, 고객용 웹 서비스 등"],
-  ["WEB + APP", "웹 + 앱 개발", "690만원~", "관리자 웹과 직원·고객용 모바일 앱을 연동하는 시스템"],
-  ["FULL SYSTEM", "웹 + 앱 + 프로그램 개발", "990만원~", "웹·모바일 앱·PC 프로그램을 하나의 데이터로 연결하는 통합 시스템"],
+const process = [
+  ["01", "온라인 진단", "구축 단계와 필요한 기능을 선택하고 현재 불편을 입력합니다."],
+  ["02", "예상 견적 발행", "선택한 범위를 기준으로 평균 구축비와 예상 기간을 확인합니다."],
+  ["03", "내부 검토·일정 확정", "예산, 업종, 구현 가능성과 의사결정자 참석 여부를 검토합니다."],
+  ["04", "현장진단·협의", "엑셀, 장부, 기존 프로그램과 실제 담당자의 업무 순서를 확인합니다."],
+  ["05", "최종 견적·계약", "최종 견적서, SOW, 운영 조건을 확정하고 계약서를 작성합니다."],
+  ["06", "개발·검수·배포", "계약금 입금 후 개발하고 검수·잔금·배포·운영관리로 이어갑니다."],
+];
+
+const visitChecklist = [
+  "실제 입력자와 승인자의 업무 순서",
+  "엑셀·카카오톡·수기 장부 사용 방식",
+  "직원·현장·거래처별 관리 기준",
+  "급여·수당·인센티브·정산 계산식",
+  "기존 데이터 규모와 이전 필요 범위",
+  "권한·알림·결제·외부 연동 요구사항",
 ];
 
 export default function BusinessPage() {
   return (
-    <main className="business-page">
-      <header className="business-header section-shell">
-        <Link className="brand" href="/" aria-label="BGK 홈"><span className="brand-mark">BGK</span><span className="brand-sub">BECOME GLOBALLY KNOWN</span></Link>
-        <nav><a href="#features">구현 기능</a><a href="#price">개발 비용</a><a href="#process">진행 절차</a><a className="business-nav-cta" href="#inquiry">무료 상담</a></nav>
+    <main className="workcraft-page">
+      <header className="sub-header shell">
+        <Link className="brand brand-dark" href="/" aria-label="BGK 홈">
+          <span className="brand-mark">BGK</span>
+          <span className="brand-sub">BECOME GLOBALLY KNOWN</span>
+        </Link>
+        <nav>
+          <a href="#method">진행방식</a>
+          <a href="#diagnosis">온라인 진단</a>
+          <a href="#quality">품질원칙</a>
+          <a className="nav-cta" href="#diagnosis">예상 견적 확인</a>
+        </nav>
       </header>
 
-      <section className="business-hero section-shell">
-        <p className="eyebrow">CUSTOM BUSINESS SaaS</p>
-        <h1>엑셀과 메신저로 흩어진 업무를<br/><span>우리 회사만의 시스템으로.</span></h1>
-        <p className="business-lead">BGK는 기업의 실제 업무 흐름을 분석해 Web · App · PC 프로그램으로 연결합니다. 이미 정해진 프로그램에 회사를 맞추는 것이 아니라, 회사가 일하는 방식에 맞는 도구를 구축합니다.</p>
-        <div className="hero-actions"><a className="btn primary" href="#inquiry">무료 상담 신청</a><a className="btn secondary" href="#price">개발 비용 보기</a></div>
-        <div className="business-tags"><span>근태관리</span><span>연차·휴무</span><span>급여·정산</span><span>채팅·공지</span><span>업무 자동화</span></div>
-      </section>
-
-      <section className="business-section section-shell pain-section">
-        <div className="business-section-heading"><p className="eyebrow">STILL WORKING THIS WAY?</p><h2>아직도 이런 방식으로<br/>관리하고 계신가요?</h2><p>업무가 여러 도구에 흩어질수록 확인과 정산에 더 많은 시간이 필요합니다.</p></div>
-        <div className="pain-grid">
-          {["엑셀로 직원 근태 관리","카카오톡으로 휴무 신청","매월 수작업으로 급여·정산","공지와 업무지시가 여러 채팅방에 분산","직원별 자료를 파일로 따로 보관"].map((text)=><article key={text}><span>✓</span><p>{text}</p></article>)}
+      <section className="workcraft-hero shell">
+        <div className="workcraft-hero-copy">
+          <p className="kicker">BGK WORKCRAFT · ON-SITE BUSINESS SYSTEM BUILD</p>
+          <h1>전화로 묻지 않습니다.<br /><span>현장에서 보고 설계합니다.</span></h1>
+          <p className="hero-description">
+            BGK는 현재 사용 중인 엑셀, 카카오톡, 수기 장부와 담당자의 실제 업무를 현장에서 확인합니다.
+            기존 프로그램에 회사를 맞추는 것이 아니라, 회사가 일하는 방식에 맞춰 Web·App·PC 프로그램과 AI 자동화를 구축합니다.
+          </p>
+          <div className="hero-buttons">
+            <a className="button button-primary" href="#diagnosis">온라인 진단 시작</a>
+            <a className="button button-ghost" href="#method">진행 절차 확인</a>
+          </div>
+          <p className="hero-policy">개발 요구사항은 전화·카카오톡·메일로 상담하지 않습니다. 일정 확인과 행정 안내에만 연락수단을 사용합니다.</p>
         </div>
-        <div className="pain-message"><strong>회사의 기존 업무방식을 바꾸는 것이 아니라,</strong><br/>그 업무방식을 하나의 시스템으로 연결합니다.</div>
+
+        <aside className="workcraft-hero-panel" aria-label="BGK WORKCRAFT 핵심 원칙">
+          <div className="panel-topline"><span>WORKCRAFT STANDARD</span><b>01</b></div>
+          <h2>현장을 모르면<br />정확한 시스템을 만들 수 없습니다.</h2>
+          <div className="principle-list">
+            <div><span>DISCOVER</span><p>실제 업무와 불편을 확인합니다.</p></div>
+            <div><span>DESIGN</span><p>업무 흐름과 권한을 설계합니다.</p></div>
+            <div><span>BUILD</span><p>웹·앱·프로그램으로 구현합니다.</p></div>
+            <div><span>OPERATE</span><p>배포 후 운영과 개선을 이어갑니다.</p></div>
+          </div>
+        </aside>
       </section>
 
-      <section id="features" className="business-section section-shell">
-        <div className="business-section-heading"><p className="eyebrow">BUILD WHAT YOU NEED</p><h2>필요한 기능만 조합하고,<br/>기업에 맞게 확장합니다.</h2><p>아래 기능은 예시입니다. 업종과 기존 업무 방식에 따라 필요한 화면과 기능을 다시 설계합니다.</p></div>
-        <div className="module-grid">{modules.map(([title,text],i)=><article className="module-card" key={title}><span>{String(i+1).padStart(2,"0")}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
-      </section>
-
-      <section className="business-section section-shell scenario-section">
-        <div className="business-section-heading"><p className="eyebrow">BUILD EXAMPLE</p><h2>회사에 필요한 흐름을<br/>이렇게 연결할 수 있습니다.</h2><p>아래는 이해를 돕기 위한 구축 예시이며, 실제 기능은 각 기업의 업무 방식에 맞춰 구성합니다.</p></div>
-        <div className="scenario-grid">
-          <article><span>OFFICE · TEAM</span><h3>직원 30명 규모 기업이라면</h3><div className="scenario-flow">QR 출퇴근 <b>→</b> 연차 신청 <b>→</b> 대표 승인 <b>→</b> 근무시간 집계 <b>→</b> 급여 정산 <b>→</b> 급여명세서 발급</div></article>
-          <article><span>FIELD · OPERATION</span><h3>현장 인력이 많은 기업이라면</h3><div className="scenario-flow">직원 등록 <b>→</b> 현장 배정 <b>→</b> 출퇴근 <b>→</b> 업무 공지 <b>→</b> 사진·자료 전송 <b>→</b> 월 정산</div></article>
-        </div>
-      </section>
-
-      <section id="price" className="business-section section-shell">
-        <div className="business-section-heading centered"><p className="eyebrow">STARTING PRICE</p><h2>구축 범위에 따라 선택하세요.</h2><p>아래 금액은 시작 가격이며 실제 견적은 기능, 화면 수, 외부 서비스 연동 및 개발 난이도에 따라 달라집니다.</p></div>
-        <div className="build-plan-grid">{plans.map(([tag,title,price,desc])=><article className="build-plan" key={tag}><span>{tag}</span><h3>{title}</h3><strong>{price}</strong><p>{desc}</p><a href="#inquiry">상담 문의 →</a></article>)}</div>
-        <p className="price-note">※ 정확한 개발비와 일정은 상담 후 요구사항을 정리하여 별도 견적으로 안내합니다.</p>
-      </section>
-
-      <section id="process" className="business-section section-shell">
-        <div className="business-section-heading"><p className="eyebrow">PROCESS</p><h2>상담부터 구축까지<br/>명확하게 진행합니다.</h2></div>
-        <div className="process-grid">{[["01","상담","현재 업무 방식과 불편한 점을 확인합니다."],["02","요구사항 정리","필요 기능과 개발 범위를 정리합니다."],["03","견적·계약","일정과 비용을 확정하고 개발 범위를 문서화합니다."],["04","개발·검수","실제 업무 흐름에 맞춰 구축하고 검수합니다."],["05","운영","서비스 오픈 후 필요한 유지관리와 추가 개발을 진행합니다."]].map(([n,t,d])=><article key={n}><b>{n}</b><h3>{t}</h3><p>{d}</p></article>)}</div>
-      </section>
-
-      <section className="business-section section-shell care-section">
-        <div className="care-panel">
-          <div><p className="eyebrow">AFTER LAUNCH</p><h2>개발 후에도<br/>계속 관리합니다.</h2><p>구축 완료가 끝이 아닙니다. 실제 운영 중 발생하는 수정과 개선도 BGK가 함께 관리합니다.</p></div>
-          <div className="care-list">{["오류 및 장애 대응","경미한 문구·화면 수정","서버·서비스 운영 지원","추가 기능 개발","Web · App · PC 프로그램 통합 관리"].map((text)=><span key={text}>{text}</span>)}</div>
+      <section className="trust-strip">
+        <div className="shell trust-grid">
+          {strengths.map(([title, text], index) => (
+            <article key={title}>
+              <span>0{index + 1}</span>
+              <div><h3>{title}</h3><p>{text}</p></div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section id="inquiry" className="business-section section-shell inquiry-section">
-        <div className="inquiry-copy"><p className="eyebrow">CONTACT BGK</p><h2 className="inquiry-title"><span>지금 사용 중인 엑셀부터</span><span>보여주셔도 됩니다.</span></h2><p>어떤 프로그램이 필요한지 아직 정하지 못하셔도 괜찮습니다. 현재 사용 중인 엑셀이나 업무 방식을 알려주시면 BGK가 필요한 시스템을 함께 설계합니다.</p><div className="direct-contact"><span>PHONE <b>{site.phone}</b></span><span>EMAIL <b>{site.email}</b></span></div></div>
-        <BusinessInquiryForm />
+      <section id="method" className="workcraft-section shell">
+        <div className="section-intro split-intro">
+          <div><p className="kicker">FROM DIAGNOSIS TO DELIVERY</p><h2>문의가 아니라,<br />검증 가능한 절차로 진행합니다.</h2></div>
+          <p>온라인에서 대략적인 범위를 정리하고, BGK가 현장에서 실제 업무를 확인한 뒤 최종 견적과 계약범위를 확정합니다.</p>
+        </div>
+        <div className="process-timeline">
+          {process.map(([number, title, description]) => (
+            <article key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <footer className="business-footer section-shell"><Link href="/">← BGK 홈페이지</Link><p>© {new Date().getFullYear()} BGK. All rights reserved.</p></footer>
+      <section className="workcraft-section workcraft-dark">
+        <div className="shell onsite-grid">
+          <div className="onsite-copy">
+            <p className="kicker kicker-light">ON-SITE DIAGNOSIS</p>
+            <h2>말로 정리된 요구사항보다<br />실제 업무를 확인합니다.</h2>
+            <p>현장진단은 약 60~90분을 기준으로 진행하며, 대표 또는 의사결정자와 실제 담당자가 함께 참석하는 것을 권장합니다.</p>
+          </div>
+          <div className="onsite-checklist">
+            {visitChecklist.map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></div>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="quality" className="workcraft-section shell capacity-section">
+        <div className="capacity-card">
+          <div>
+            <p className="kicker">QUALITY OVER VOLUME</p>
+            <h2>BGK는 무리하게<br />프로젝트를 수주하지 않습니다.</h2>
+            <p>한 프로젝트에 충분한 시간을 투입하고 제작 품질을 유지하기 위해 매월 현장진단과 신규 구축 수를 제한합니다.</p>
+          </div>
+          <div className="capacity-numbers">
+            <div><span>MONTHLY ON-SITE</span><strong>최대 8개사</strong><p>현장진단·업무 확인</p></div>
+            <div><span>NEW BUILD</span><strong>최대 3개사</strong><p>신규 구축 착수</p></div>
+          </div>
+          <p className="capacity-note">신청이 많을 경우 접수 순서와 프로젝트 적합성을 검토해 다음 일정으로 안내할 수 있습니다. 많이 만들기보다, 실제로 작동하는 시스템을 만듭니다.</p>
+        </div>
+      </section>
+
+      <section id="diagnosis" className="workcraft-section diagnosis-section">
+        <div className="shell">
+          <div className="section-intro centered narrow">
+            <p className="kicker">ONLINE DIAGNOSIS & ESTIMATE</p>
+            <h2>필요한 범위를 선택하고<br />예상 견적을 먼저 확인하세요.</h2>
+            <p>기본 구축 3단계와 추가 기능의 평균 개발비를 기준으로 예상 금액과 기간을 산출합니다. 현장진단 전 예산과 범위를 확인하는 1차 도구입니다.</p>
+          </div>
+          <WorkcraftDiagnosis />
+        </div>
+      </section>
+
+      <section className="workcraft-section shell contract-section">
+        <div className="contract-panel">
+          <div><p className="kicker">CLEAR SCOPE & CONTRACT</p><h2>개발 전에 범위와 책임을<br />문서로 확정합니다.</h2></div>
+          <div className="contract-docs">
+            <article><span>01</span><h3>최종 견적서</h3><p>확정 금액, 일정, 결제조건과 유효기간을 명시합니다.</p></article>
+            <article><span>02</span><h3>개발범위서(SOW)</h3><p>포함 기능, 제외 범위, 검수 기준과 변경 절차를 정리합니다.</p></article>
+            <article><span>03</span><h3>구축 계약서</h3><p>계약금·잔금, 지식재산권, 하자보수와 운영 조건을 확정합니다.</p></article>
+          </div>
+          <div className="change-policy">
+            <b>추가 비용 원칙</b>
+            <p>개발 중 최초 확정 범위에 포함되지 않은 신규 기능이나 정책 변경으로 추가 작업이 필요한 경우, 사유·금액·일정을 먼저 안내합니다. 고객의 서면 동의 없이 추가 비용을 청구하지 않습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="corporate-footer shell">
+        <div><Link className="footer-logo" href="/">BGK</Link><p>현장을 이해하고, 작동하는 시스템을 구축합니다.</p></div>
+        <dl>
+          <div><dt>대표</dt><dd>{site.representative}</dd></div>
+          <div><dt>사업자등록번호</dt><dd>{site.businessNumber}</dd></div>
+          <div><dt>행정 문의</dt><dd>{site.email}</dd></div>
+          <div><dt>주소</dt><dd>{site.address}</dd></div>
+        </dl>
+        <p className="copyright">© {new Date().getFullYear()} BGK. All rights reserved.</p>
+      </footer>
     </main>
   );
 }
