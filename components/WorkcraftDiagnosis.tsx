@@ -25,6 +25,15 @@ type Addon = {
   price: number;
 };
 
+type PackageExample = {
+  id: "core" | "connect" | "suite";
+  planId: PlanId;
+  label: string;
+  title: string;
+  description: string;
+  addonIds: string[];
+};
+
 type IssuedQuote = {
   id: string;
   issuedAt: string;
@@ -133,6 +142,101 @@ const addons: Addon[] = [
   { id: "audit", category: "integration", title: "고급 로그·보안·승인이력", description: "주요 작업 기록, 승인 이력과 보안 정책 강화", price: 250 },
 ];
 
+const packageExamples: PackageExample[] = [
+  {
+    id: "core",
+    planId: "web",
+    label: "CORE EXAMPLE",
+    title: "사내 근태·소통 관리 Web",
+    description: "관리자와 직원이 브라우저에서 출퇴근 기록과 사내 업무소통을 함께 관리하는 구성입니다.",
+    addonIds: ["attendance", "chat", "social"],
+  },
+  {
+    id: "connect",
+    planId: "web-app",
+    label: "CONNECT EXAMPLE",
+    title: "현장 인력 운영 Web + App",
+    description: "관리자는 Web에서 현장과 직원을 관리하고, 직원은 App에서 출퇴근·휴무·배정업무를 확인합니다.",
+    addonIds: ["organization", "attendance", "leave", "assignment", "push"],
+  },
+  {
+    id: "suite",
+    planId: "full",
+    label: "SUITE EXAMPLE",
+    title: "재고·발주·문서 통합 운영",
+    description: "사무실 Web, 현장 App, Windows Program을 하나의 데이터로 연결하는 통합 구성입니다.",
+    addonIds: ["inventory", "inventory-advanced", "document", "order", "dashboard"],
+  },
+];
+
+function PackageMockup({ variant }: { variant: PackageExample["id"] }) {
+  if (variant === "core") {
+    return (
+      <div className="package-mockup package-mockup-core" aria-label="사내 근태·소통 관리 웹 화면 예시">
+        <div className="mock-browser-bar"><i /><i /><i /><span>WORKCRAFT · 사내 운영관리</span></div>
+        <div className="mock-web-shell">
+          <aside className="mock-sidebar">
+            <b>ACME</b>
+            <span className="active">대시보드</span><span>출퇴근</span><span>사내채팅</span><span>직원관리</span>
+          </aside>
+          <div className="mock-dashboard">
+            <div className="mock-dashboard-head"><div><small>오늘의 운영현황</small><strong>근태 대시보드</strong></div><em>관리자</em></div>
+            <div className="mock-stat-row"><div><small>출근</small><b>28</b></div><div><small>지각</small><b>2</b></div><div><small>미출근</small><b>1</b></div></div>
+            <div className="mock-core-bottom">
+              <div className="mock-table"><span>직원</span><span>출근시간</span><span>상태</span><b>김현우</b><b>08:54</b><i>정상</i><b>이서윤</b><b>09:08</b><i className="late">지각</i></div>
+              <div className="mock-chat"><small>운영팀 채팅</small><p>오늘 현장 일정 확인 부탁드립니다.</p><p className="mine">확인했습니다. 문서도 첨부했어요.</p><div>파일전송.pdf <b>↓</b></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === "connect") {
+    return (
+      <div className="package-mockup package-mockup-connect" aria-label="현장 인력 운영 웹과 앱 화면 예시">
+        <div className="mock-connect-web">
+          <div className="mock-browser-bar"><i /><i /><i /><span>WORKCRAFT · 현장운영</span></div>
+          <div className="mock-connect-content">
+            <div className="mock-connect-head"><small>현장 인력 현황</small><strong>배정 및 근무관리</strong></div>
+            <div className="mock-map-card"><span>강남 A현장</span><b>12명 배정</b><i>진행중</i></div>
+            <div className="mock-map-card"><span>성수 B현장</span><b>8명 배정</b><i className="ready">준비</i></div>
+            <div className="mock-progress"><span>오늘 출근 완료</span><b>87%</b><i><em /></i></div>
+          </div>
+        </div>
+        <div className="mock-phone">
+          <div className="mock-phone-speaker" />
+          <div className="mock-phone-screen">
+            <div className="mock-mobile-head"><b>오늘의 업무</b><span>●</span></div>
+            <div className="mock-mobile-site"><small>배정 현장</small><strong>강남 A현장</strong><p>09:00 - 18:00</p></div>
+            <button type="button">QR 출근하기</button>
+            <div className="mock-mobile-actions"><span>휴무신청</span><span>공지확인</span></div>
+            <div className="mock-mobile-notice"><small>새 업무 알림</small><p>현장 담당자가 업무자료를 등록했습니다.</p></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="package-mockup package-mockup-suite" aria-label="재고 발주 문서 통합 웹 앱 PC 화면 예시">
+      <div className="mock-suite-pc">
+        <div className="mock-pc-title"><span>WORKCRAFT INVENTORY</span><i>— □ ×</i></div>
+        <div className="mock-suite-grid">
+          <aside><b>ACME LOGISTICS</b><span className="active">통합현황</span><span>입출고</span><span>재고관리</span><span>발주관리</span><span>전자문서</span></aside>
+          <div className="mock-suite-main">
+            <div className="mock-suite-head"><div><small>실시간 재고현황</small><strong>통합 운영 대시보드</strong></div><button type="button">+ 입고등록</button></div>
+            <div className="mock-suite-stats"><div><small>총 품목</small><b>1,248</b></div><div><small>안전재고 미달</small><b>16</b></div><div><small>오늘 출고</small><b>93</b></div></div>
+            <div className="mock-inventory-table"><span>품목</span><span>창고</span><span>현재고</span><span>상태</span><b>부품 A-120</b><b>제1창고</b><b>380</b><i>정상</i><b>자재 B-042</b><b>제2창고</b><b>18</b><i className="warning">보충필요</i></div>
+          </div>
+        </div>
+      </div>
+      <div className="mock-suite-mobile"><small>바코드 입출고</small><div className="mock-scan-frame"><i /><i /><i /><i /><span>|||| ||| ||||</span></div><b>품목을 스캔해 주세요</b><p>창고별 재고와 LOT 이력이 자동 기록됩니다.</p></div>
+      <div className="mock-suite-document"><span>전자결재</span><b>발주서 #PO-26018</b><p>담당자 검토 완료</p><i>승인 대기</i></div>
+    </div>
+  );
+}
+
 function won(value: number) {
   return new Intl.NumberFormat("ko-KR").format(value) + "만원";
 }
@@ -173,6 +277,17 @@ export default function WorkcraftDiagnosis() {
   function toggleAddon(id: string) {
     setSelected((items) => items.includes(id) ? items.filter((item) => item !== id) : [...items, id]);
     setIssued(null);
+  }
+
+  function applyPackageExample(example: PackageExample) {
+    setPlanId(example.planId);
+    setSelected(example.addonIds);
+    setIssued(null);
+    setNotice("");
+    setSuccess(false);
+    window.setTimeout(() => {
+      document.getElementById("estimate-live")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 80);
   }
 
   function issueQuote() {
@@ -281,6 +396,67 @@ export default function WorkcraftDiagnosis() {
         <p className="package-example-note">DELIVO와 PAWU는 BGK의 자체 운영 제품이며, 위 예시는 플랫폼 연결 구조를 설명하기 위한 참고입니다. 동일한 전체 기능을 복제하는 가격을 의미하지 않습니다.</p>
       </section>
 
+      <section className="diagnosis-block package-examples-block" aria-labelledby="package-examples-title">
+        <div className="diagnosis-block-head package-examples-heading">
+          <div>
+            <span className="step-label">PACKAGE SCREEN EXAMPLES</span>
+            <h3 id="package-examples-title">패키지별 대표 화면을 먼저 확인하세요.</h3>
+          </div>
+          <p>자주 선택되는 기능을 조합한 표준 화면 예시입니다. 실제 구축 시 고객사 브랜드와 업무 방식에 맞춰 변경됩니다.</p>
+        </div>
+
+        <div className="package-example-grid">
+          {packageExamples.map((example) => {
+            const examplePlan = plans.find((item) => item.id === example.planId) ?? plans[0];
+            const exampleAddons = addons.filter((item) => example.addonIds.includes(item.id));
+            const exampleAverage = examplePlan.price + exampleAddons.reduce((sum, item) => sum + item.price, 0);
+            const exampleMin = Math.max(examplePlan.price, Math.round((exampleAverage * 0.85) / 10) * 10);
+            const exampleMax = Math.round((exampleAverage * 1.2) / 10) * 10;
+
+            return (
+              <article className={`package-example-card package-example-${example.id}`} key={example.id}>
+                <div className="package-example-card-head">
+                  <div>
+                    <span>{example.label}</span>
+                    <h4>{example.title}</h4>
+                    <p>{example.description}</p>
+                  </div>
+                  <b>{examplePlan.code}</b>
+                </div>
+
+                <PackageMockup variant={example.id} />
+
+                <div className="package-example-details">
+                  <div className="package-example-stack">
+                    <span className="package-chip base">{examplePlan.code}</span>
+                    {exampleAddons.map((item) => <span className="package-chip" key={item.id}>+ {item.title}</span>)}
+                  </div>
+                  <div className="package-example-price">
+                    <small>예상 평균 구축비</small>
+                    <strong>{won(exampleAverage)}</strong>
+                    <span>{won(exampleMin)}~{won(exampleMax)} · {durationFor(exampleAverage)}</span>
+                  </div>
+                  <button type="button" className="button button-secondary full" onClick={() => applyPackageExample(example)}>
+                    이 구성으로 견적에 담기
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="package-customization-note">
+          <div>
+            <b>화면은 고정 템플릿이 아닙니다.</b>
+            <p>고객사 로고, 서비스명, 대표 색상, 메뉴명, 입력항목, 역할·권한, 업무 흐름과 기본 화면 배치는 현장진단 결과에 맞춰 조정할 수 있습니다.</p>
+          </div>
+          <div>
+            <b>별도 견적이 필요한 경우</b>
+            <p>예시와 완전히 다른 전면 UI 설계, 화면 수의 대폭 증가, 복잡한 애니메이션·특수 차트, 새로운 업무 로직은 추가 범위로 산정됩니다.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="diagnosis-block" aria-labelledby="addon-title">
         <div className="diagnosis-block-head">
           <div>
@@ -318,7 +494,7 @@ export default function WorkcraftDiagnosis() {
         </div>
       </section>
 
-      <aside className="estimate-live" aria-live="polite">
+      <aside id="estimate-live" className="estimate-live" aria-live="polite">
         <div>
           <span>실시간 예상 견적</span>
           <h3>{won(average)}</h3>
