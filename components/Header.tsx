@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 
 const items = [
   ["회사소개", "#about"],
-  ["사업영역", "#business-lines"],
+  ["사업", "#services"],
   ["WORKCRAFT", "/business"],
-  ["제품", "#products"],
-  ["운영원칙", "#principles"],
+  ["진행방식", "#principles"],
   ["대표소개", "#founder"],
 ] as const;
 
@@ -25,7 +24,7 @@ export default function Header() {
   return (
     <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
       <div className="shell header-inner">
-        <a className="brand" href="#top" aria-label="BGK 홈">
+        <a className="brand" href="/#top" aria-label="BGK 홈">
           <span className="brand-mark">BGK</span>
           <span className="brand-sub">BECOME GLOBALLY KNOWN</span>
         </a>

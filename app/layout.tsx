@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bgkcogito.co.kr"),
-  title: { default: "BGK | 기업 맞춤 시스템·산업 SaaS", template: "%s | BGK" },
-  description: "BGK는 현장을 직접 이해하고 Web·App·PC 프로그램과 AI 업무자동화를 구축하는 기업입니다. WORKCRAFT, DELIVO, PAWU를 운영합니다.",
+  title: { default: "BGK | 기업 맞춤 구축과 산업 플랫폼", template: "%s | BGK" },
+  description: "BGK는 현장을 직접 확인해 Web·App·PC 프로그램을 구축하고, DELIVO와 PAWU를 직접 운영하는 소프트웨어 기업입니다.",
   keywords: ["BGK", "비지케이", "WORKCRAFT", "기업 맞춤 개발", "업무자동화", "Web App PC 프로그램", "DELIVO", "PAWU", "SaaS"],
   authors: [{ name: "BGK", url: "https://bgkcogito.co.kr" }],
   creator: "BGK",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BGK | 기업 맞춤 시스템·산업 SaaS",
+    title: "BGK | 기업 맞춤 구축과 산업 플랫폼",
     description: "현장을 이해하고, 작동하는 시스템을 구축합니다.",
     images: ["/twitter-image.png"],
   },
