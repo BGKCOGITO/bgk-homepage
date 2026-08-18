@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import WorkcraftPackageDemo, { type WorkcraftDemoId } from "@/components/WorkcraftPackageDemo";
 
 type PlanId = "web" | "web-app" | "full";
 type AddonCategoryId = "operations" | "workflow" | "integration";
@@ -266,6 +267,7 @@ export default function WorkcraftDiagnosis() {
   const [notice, setNotice] = useState("");
   const [success, setSuccess] = useState(false);
   const [sending, setSending] = useState(false);
+  const [activeDemo, setActiveDemo] = useState<WorkcraftDemoId | null>(null);
 
   const plan = plans.find((item) => item.id === planId) ?? plans[0];
   const selectedAddons = useMemo(() => addons.filter((item) => selected.includes(item.id)), [selected]);
@@ -400,9 +402,9 @@ export default function WorkcraftDiagnosis() {
         <div className="diagnosis-block-head package-examples-heading">
           <div>
             <span className="step-label">PACKAGE SCREEN EXAMPLES</span>
-            <h3 id="package-examples-title">패키지별 대표 화면을 먼저 확인하세요.</h3>
+            <h3 id="package-examples-title">메뉴를 직접 눌러 결과 화면을 확인하세요.</h3>
           </div>
-          <p>자주 선택되는 기능을 조합한 표준 화면 예시입니다. 실제 구축 시 고객사 브랜드와 업무 방식에 맞춰 변경됩니다.</p>
+          <p>자주 선택되는 기능을 조합한 클릭형 화면 시뮬레이션입니다. 각 메뉴를 선택하면 실제 구축 시 보게 될 대표 화면과 업무 결과가 바뀝니다.</p>
         </div>
 
         <div className="package-example-grid">
@@ -436,9 +438,14 @@ export default function WorkcraftDiagnosis() {
                     <strong>{won(exampleAverage)}</strong>
                     <span>{won(exampleMin)}~{won(exampleMax)} · {durationFor(exampleAverage)}</span>
                   </div>
-                  <button type="button" className="button button-secondary full" onClick={() => applyPackageExample(example)}>
-                    이 구성으로 견적에 담기
-                  </button>
+                  <div className="package-example-actions">
+                    <button type="button" className="button button-primary full" onClick={() => setActiveDemo(example.id)}>
+                      메뉴별 화면 직접 보기
+                    </button>
+                    <button type="button" className="button button-secondary full" onClick={() => applyPackageExample(example)}>
+                      이 구성으로 견적에 담기
+                    </button>
+                  </div>
                 </div>
               </article>
             );
@@ -574,6 +581,18 @@ export default function WorkcraftDiagnosis() {
             </form>
           </section>
         </>
+      )}
+
+      {activeDemo && (
+        <WorkcraftPackageDemo
+          demoId={activeDemo}
+          onClose={() => setActiveDemo(null)}
+          onApply={() => {
+            const example = packageExamples.find((item) => item.id === activeDemo);
+            if (example) applyPackageExample(example);
+            setActiveDemo(null);
+          }}
+        />
       )}
     </div>
   );
