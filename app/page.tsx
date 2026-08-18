@@ -147,7 +147,7 @@ export default function Home() {
             <div className="workcraft-highlight-copy">
               <p className="kicker kicker-light">BGK WORKCRAFT</p>
               <h2>전화로 묻지 않습니다.<br />현장에서 보고 설계합니다.</h2>
-              <p>현재 사용 중인 엑셀·카카오톡·수기 장부와 실제 담당자의 업무 순서를 직접 확인한 뒤 회사 방식에 맞는 시스템을 구축합니다.</p>
+              <p>현재 사용 중인 엑셀·시트·한글·Word·PDF 문서·카카오톡·수기 장부와 실제 담당자의 업무 순서를 직접 확인한 뒤 회사 방식에 맞는 시스템을 구축합니다.</p>
               <Link className="button button-primary" href="/business">온라인 진단·예상 견적 확인</Link>
             </div>
             <div className="workcraft-mini-process">

@@ -20,14 +20,14 @@ const process = [
   ["01", "온라인 진단", "구축 단계와 필요한 기능을 선택하고 현재 불편을 입력합니다."],
   ["02", "예상 견적 발행", "선택한 범위를 기준으로 평균 구축비와 예상 기간을 확인합니다."],
   ["03", "내부 검토·일정 확정", "예산, 업종, 구현 가능성과 의사결정자 참석 여부를 검토합니다."],
-  ["04", "현장진단·협의", "엑셀, 장부, 기존 프로그램과 실제 담당자의 업무 순서를 확인합니다."],
+  ["04", "현장진단·협의", "엑셀·시트·문서·장부·기존 프로그램과 실제 담당자의 업무 순서를 확인합니다."],
   ["05", "최종 견적·계약", "최종 견적서, SOW, 운영 조건을 확정하고 계약서를 작성합니다."],
   ["06", "개발·검수·배포", "계약금 입금 후 개발하고 검수·잔금·배포·운영관리로 이어갑니다."],
 ];
 
 const visitChecklist = [
   "실제 입력자와 승인자의 업무 순서",
-  "엑셀·카카오톡·수기 장부 사용 방식",
+  "엑셀·시트·문서·카카오톡·수기 장부 사용 방식",
   "직원·현장·거래처별 관리 기준",
   "급여·수당·인센티브·정산 계산식",
   "기존 데이터 규모와 이전 필요 범위",
@@ -55,7 +55,7 @@ export default function BusinessPage() {
           <p className="kicker">BGK WORKCRAFT · ON-SITE BUSINESS SYSTEM BUILD</p>
           <h1>전화로 묻지 않습니다.<br /><span>현장에서 보고 설계합니다.</span></h1>
           <p className="hero-description">
-            BGK는 현재 사용 중인 엑셀, 카카오톡, 수기 장부와 담당자의 실제 업무를 현장에서 확인합니다.
+            BGK는 현재 사용 중인 엑셀, 시트, 한글·Word·PDF 문서, 카카오톡, 수기 장부와 담당자의 실제 업무를 현장에서 확인합니다.
             기존 프로그램에 회사를 맞추는 것이 아니라, 회사가 일하는 방식에 맞춰 Web·App·PC 프로그램과 AI 자동화를 구축합니다.
           </p>
           <div className="hero-buttons">
@@ -63,6 +63,11 @@ export default function BusinessPage() {
             <a className="button button-ghost" href="#method">진행 절차 확인</a>
           </div>
           <p className="hero-policy">개발 요구사항은 전화·카카오톡·메일로 상담하지 않습니다. 일정 확인과 행정 안내에만 연락수단을 사용합니다.</p>
+          <div className="legacy-workflow-chips" aria-label="WORKCRAFT가 줄이는 반복업무">
+            <span>엑셀 관리 X</span>
+            <span>시트 관리 X</span>
+            <span>문서 사용 X</span>
+          </div>
         </div>
 
         <aside className="workcraft-hero-panel" aria-label="BGK WORKCRAFT 핵심 원칙">
@@ -137,7 +142,7 @@ export default function BusinessPage() {
           <div className="section-intro centered narrow">
             <p className="kicker">ONLINE DIAGNOSIS & ESTIMATE</p>
             <h2>필요한 범위를 선택하고<br />예상 견적을 먼저 확인하세요.</h2>
-            <p>기본 구축 3단계와 추가 기능의 평균 개발비를 기준으로 예상 금액과 기간을 산출합니다. 현장진단 전 예산과 범위를 확인하는 1차 도구입니다.</p>
+            <p>WORKCRAFT CORE·CONNECT·SUITE 3개 구축 패키지와 추가 기능의 시장 참고 평균값을 기준으로 예상 금액과 기간을 산출합니다. 현장진단 전 예산과 범위를 확인하는 1차 도구입니다.</p>
           </div>
           <WorkcraftDiagnosis />
         </div>
