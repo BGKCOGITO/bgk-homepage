@@ -260,6 +260,25 @@ function makeQuoteId() {
   return `BGK-${y}${m}${d}-${suffix}`;
 }
 
+function trackWorkcraftEvent(eventName: string, params: Record<string, string | number> = {}) {
+  if (typeof window === "undefined") return;
+  const trackedWindow = window as Window & {
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
+  };
+
+  // Google Ads conversion labels are not issued yet.
+  // These named events mark the exact success points so a future conversion label
+  // can be connected without changing the WORKCRAFT user flow.
+  if (typeof trackedWindow.gtag === "function") {
+    trackedWindow.gtag("event", eventName, params);
+    return;
+  }
+
+  trackedWindow.dataLayer = trackedWindow.dataLayer || [];
+  trackedWindow.dataLayer.push({ event: eventName, ...params });
+}
+
 export default function WorkcraftDiagnosis() {
   const [planId, setPlanId] = useState<PlanId>("web");
   const [selected, setSelected] = useState<string[]>([]);
@@ -304,6 +323,11 @@ export default function WorkcraftDiagnosis() {
       duration,
     };
     setIssued(quote);
+    trackWorkcraftEvent("workcraft_quote_generated", {
+      quote_id: quote.id,
+      package: quote.plan.code,
+      estimate_average_manwon: quote.average,
+    });
     setNotice("");
     setSuccess(false);
     window.setTimeout(() => document.getElementById("issued-quote")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
@@ -355,6 +379,11 @@ export default function WorkcraftDiagnosis() {
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result?.message || "현장진단 신청 접수에 실패했습니다.");
       setSuccess(true);
+      trackWorkcraftEvent("workcraft_field_diagnosis_submitted", {
+        quote_id: issued.id,
+        package: issued.plan.code,
+        estimate_average_manwon: issued.average,
+      });
       setNotice("현장진단 신청이 접수되었습니다. 내용을 검토한 뒤 방문 가능 여부와 일정을 안내드립니다.");
       form.reset();
     } catch (error) {
