@@ -384,6 +384,22 @@ export default function WorkcraftDiagnosis() {
         package: issued.plan.code,
         estimate_average_manwon: issued.average,
       });
+      if (typeof window !== "undefined") {
+        const conversionWindow = window as Window & {
+          gtag_report_workcraft_lead_conversion?: (url?: string) => boolean;
+          gtag?: (...args: unknown[]) => void;
+        };
+
+        if (typeof conversionWindow.gtag_report_workcraft_lead_conversion === "function") {
+          conversionWindow.gtag_report_workcraft_lead_conversion();
+        } else if (typeof conversionWindow.gtag === "function") {
+          conversionWindow.gtag("event", "conversion", {
+            send_to: "AW-18396552865/am5wCN6J1eMcEKG91MRE",
+            value: 1.0,
+            currency: "KRW",
+          });
+        }
+      }
       setNotice("현장진단 신청이 접수되었습니다. 내용을 검토한 뒤 방문 가능 여부와 일정을 안내드립니다.");
       form.reset();
     } catch (error) {

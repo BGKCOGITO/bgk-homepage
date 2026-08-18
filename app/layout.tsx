@@ -58,8 +58,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
               gtag('js', new Date());
               gtag('config', 'AW-18396552865');
+
+              window.gtag_report_workcraft_lead_conversion = function(url) {
+                var callback = function () {
+                  if (typeof url !== 'undefined' && url) {
+                    window.location = url;
+                  }
+                };
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-18396552865/am5wCN6J1eMcEKG91MRE',
+                  'value': 1.0,
+                  'currency': 'KRW',
+                  'event_callback': callback
+                });
+                return false;
+              };
             `,
           }}
         />
