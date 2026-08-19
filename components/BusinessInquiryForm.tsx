@@ -21,7 +21,6 @@ export default function BusinessInquiryForm() {
       method: String(data.get("method") || "").trim(),
       features: String(data.get("features") || "").trim(),
       message: String(data.get("message") || "").trim(),
-      website: String(data.get("website") || "").trim(),
     };
 
     if (!payload.company || !payload.manager || !payload.phone || !payload.features) {
@@ -68,9 +67,8 @@ export default function BusinessInquiryForm() {
       <label>현재 관리 방식<input name="method" placeholder="예: 엑셀, 카카오톡, 수기 장부를 함께 사용 중" /></label>
       <label>필요한 기능 *<textarea name="features" required rows={3} placeholder="예: QR 출퇴근, 연차 승인, 급여 정산, 급여명세서, 사내 공지" /></label>
       <label>문의 내용<textarea name="message" rows={4} placeholder="직원 수, 현재 불편한 점, 원하는 개발 일정 등을 자유롭게 적어주세요." /></label>
-      <label className="business-honeypot" aria-hidden="true">웹사이트<input name="website" tabIndex={-1} autoComplete="off" /></label>
       <div className="form-submit-row">
-        <button className="btn primary" type="submit" disabled={sending}>{sending ? "접수 중..." : "무료 상담 문의하기"}</button>
+        <button className="btn primary" type="submit" disabled={sending}>{sending ? "접수 중..." : "상담 문의하기"}</button>
         <span>접수 전 비용이 발생하지 않습니다.</span>
       </div>
       {notice && <p className={`form-notice${success ? " success" : ""}`}>{notice}</p>}

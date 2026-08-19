@@ -2,6 +2,7 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import WorkcraftPackageDemo, { type WorkcraftDemoId } from "@/components/WorkcraftPackageDemo";
+import { workcraftPromotion, workcraftPromotionOpen } from "@/data/workcraftPromotion";
 
 type PlanId = "web" | "web-app" | "full";
 type AddonCategoryId = "operations" | "workflow" | "integration";
@@ -62,7 +63,7 @@ const plans: Plan[] = [
       "직원 사번·회사발급 ID 로그인",
       "대표·관리자·일반사용자 기본 권한",
       "기본 업무 모듈 1종",
-      "검색·필터·표준 엑셀 다운로드",
+      "검색·필터·표준 엑셀 파일 저장",
       "운영 배포·30일 무상 하자보수",
     ],
   },
@@ -80,8 +81,8 @@ const plans: Plan[] = [
       "Android App 1종",
       "앱 아이콘·시작화면·고객사 브랜딩",
       "기본 푸시알림",
-      "테스트 APK·서명 APK·AAB 제공",
-      "내부 APK 배포 또는 Play 최초 등록 지원",
+      "Android 테스트·서명 빌드 및 스토어 제출 파일 구성",
+      "내부 테스트 배포 또는 Google Play 최초 등록 지원",
       "Web·App 통합 데이터 연동",
     ],
   },
@@ -89,16 +90,16 @@ const plans: Plan[] = [
     id: "full",
     eyebrow: "PACKAGE 03",
     code: "WORKCRAFT SUITE",
-    title: "웹·앱·PC 통합 운영형",
-    platform: "Web + Android App 1종 + Windows Program 1종",
+    title: "웹·앱·Windows 통합 운영형",
+    platform: "Web + Android App 1종 + Windows 업무 클라이언트 1종",
     price: 990,
-    description: "Web·모바일 App·Windows Program을 하나의 데이터와 권한으로 연결합니다.",
-    example: "PAWU형 관리자 Web + 사용자 App + 업무용 PC Program 연결 구조",
+    description: "Web·모바일 App·Windows 업무 클라이언트를 하나의 데이터와 권한으로 연결합니다.",
+    example: "PAWU형 관리자 Web + 사용자 App + Windows 업무 클라이언트 연결 구조",
     includes: [
       "CONNECT 기본 구성 전체",
-      "Windows PC Program 1종",
-      "설치파일·PC 아이콘·시작화면",
-      "Web·App·PC 통합 데이터베이스",
+      "Windows 업무 클라이언트 1종",
+      "Windows 실행환경·아이콘·시작화면 구성",
+      "Web·App·Windows 통합 데이터베이스",
       "통합 로그인·권한·업무흐름",
       "버전·배포 환경 구성",
       "운영 배포·30일 무상 하자보수",
@@ -125,7 +126,7 @@ const addons: Addon[] = [
   { id: "document", category: "workflow", title: "전자문서·결재·보관", description: "반복 문서 작성, 승인선, 상태와 문서 이력 관리", price: 220 },
   { id: "notice", category: "workflow", title: "공지·업무지시·확인", description: "공지 등록, 대상 지정, 확인 여부와 업무 체크", price: 120 },
   { id: "chat", category: "workflow", title: "사내 채팅·파일 전송", description: "실시간 업무 채팅방, 사진·문서 첨부와 참여자 권한", price: 350 },
-  { id: "dashboard", category: "workflow", title: "운영통계·대시보드", description: "기간별 현황, 비교 지표와 표준 엑셀 다운로드", price: 180 },
+  { id: "dashboard", category: "workflow", title: "운영통계·대시보드", description: "기간별 현황, 비교 지표와 표준 엑셀 파일 저장", price: 180 },
   { id: "calendar", category: "workflow", title: "예약·일정·캘린더", description: "예약 가능시간, 일정 배정과 진행상태 관리", price: 200 },
   { id: "crm", category: "workflow", title: "고객·거래처 관리(CRM)", description: "고객·거래처 정보, 상담 이력, 상태와 담당자 관리", price: 200 },
   { id: "order", category: "workflow", title: "견적·발주·주문 관리", description: "견적서, 발주, 주문 상태와 거래처별 진행 관리", price: 250 },
@@ -165,7 +166,7 @@ const packageExamples: PackageExample[] = [
     planId: "full",
     label: "SUITE EXAMPLE",
     title: "재고·발주·문서 통합 운영",
-    description: "사무실 Web, 현장 App, Windows Program을 하나의 데이터로 연결하는 통합 구성입니다.",
+    description: "사무실 Web, 현장 App, Windows 업무 클라이언트를 하나의 데이터로 연결하는 통합 구성입니다.",
     addonIds: ["inventory", "inventory-advanced", "document", "order", "dashboard"],
   },
 ];
@@ -220,7 +221,7 @@ function PackageMockup({ variant }: { variant: PackageExample["id"] }) {
   }
 
   return (
-    <div className="package-mockup package-mockup-suite" aria-label="재고 발주 문서 통합 웹 앱 PC 화면 예시">
+    <div className="package-mockup package-mockup-suite" aria-label="재고 발주 문서 통합 Web App Windows 화면 예시">
       <div className="mock-suite-pc">
         <div className="mock-pc-title"><span>WORKCRAFT INVENTORY</span><i>— □ ×</i></div>
         <div className="mock-suite-grid">
@@ -358,10 +359,10 @@ export default function WorkcraftDiagnosis() {
       plan: `${issued.plan.code} · ${issued.plan.title} (${won(issued.plan.price)}~)`,
       addons: issued.addons.length ? issued.addons.map((item) => `${item.title} (+${won(item.price)})`).join(" / ") : "추가 기능 선택 없음",
       estimate: `평균 ${won(issued.average)} / 예상 범위 ${won(issued.min)}~${won(issued.max)} / 기간 ${issued.duration}`,
-      website: String(data.get("website") || "").trim(),
+      promotionAcknowledged: String(data.get("promotionAcknowledged") || "").trim(),
     };
 
-    if (!payload.company || !payload.manager || !payload.phone || !payload.businessAddress || !payload.industry || !payload.employees || !payload.pain || !payload.preferredDate || !payload.decisionMaker) {
+    if (!payload.company || !payload.manager || !payload.phone || !payload.businessAddress || !payload.industry || !payload.employees || !payload.pain || !payload.preferredDate || !payload.decisionMaker || (workcraftPromotionOpen && !payload.promotionAcknowledged)) {
       setSuccess(false);
       setNotice("필수 항목을 모두 입력해 주세요.");
       return;
@@ -385,14 +386,8 @@ export default function WorkcraftDiagnosis() {
         estimate_average_manwon: issued.average,
       });
       if (typeof window !== "undefined") {
-        const conversionWindow = window as Window & {
-          gtag_report_workcraft_lead_conversion?: (url?: string) => boolean;
-          gtag?: (...args: unknown[]) => void;
-        };
-
-        if (typeof conversionWindow.gtag_report_workcraft_lead_conversion === "function") {
-          conversionWindow.gtag_report_workcraft_lead_conversion();
-        } else if (typeof conversionWindow.gtag === "function") {
+        const conversionWindow = window as Window & { gtag?: (...args: unknown[]) => void };
+        if (typeof conversionWindow.gtag === "function") {
           conversionWindow.gtag("event", "conversion", {
             send_to: "AW-18396552865/am5wCN6J1eMcEKG91MRE",
             value: 1.0,
@@ -412,6 +407,27 @@ export default function WorkcraftDiagnosis() {
 
   return (
     <div className="diagnosis-workspace">
+      <section className={`diagnosis-promotion-card ${workcraftPromotionOpen ? "open" : "closed"}`} aria-label="WORKCRAFT 프로모션 안내">
+        <div className="diagnosis-promotion-head">
+          <div>
+            <span>LAUNCH PROMOTION</span>
+            <h3>{workcraftPromotion.title}</h3>
+            <strong>{workcraftPromotion.benefit}</strong>
+          </div>
+          <div className="diagnosis-promotion-count">
+            <small>현재 잔여</small>
+            <b>{workcraftPromotionOpen ? workcraftPromotion.remainingSlots : 0}</b>
+            <em>/ {workcraftPromotion.totalSlots}개사</em>
+          </div>
+        </div>
+        <p>{workcraftPromotion.benefitDetail}</p>
+        <div className="diagnosis-promotion-terms">
+          <b>제외 항목</b>
+          <div>{workcraftPromotion.exclusions.map((item) => <span key={item}>· {item}</span>)}</div>
+        </div>
+        <small className="diagnosis-promotion-rule">{workcraftPromotion.countRule}</small>
+      </section>
+
       <section className="diagnosis-block" aria-labelledby="plan-title">
         <div className="diagnosis-block-head">
           <div>
@@ -521,6 +537,12 @@ export default function WorkcraftDiagnosis() {
           <b>가격 산정 기준</b>
           <p>단순 기능 버튼이 아니라 기획·화면·DB·서버 로직·권한·테스트·배포까지 포함한 모듈 단위 예상금액입니다.</p>
         </div>
+        {workcraftPromotionOpen && (
+          <div className="promotion-addon-note">
+            <b>프로모션 선택 대상</b>
+            <p>아래 추가 기능 중 최종 계약서에 포함되는 원하는 1개 옵션의 BGK 개발비를 100% 지원합니다. 온라인 예상견적에는 비교를 위해 정상 가격을 그대로 표시합니다.</p>
+          </div>
+        )}
         <div className="addon-groups">
           {addonCategories.map((group) => (
             <section className="addon-group" key={group.id} aria-labelledby={`addon-${group.id}`}>
@@ -551,6 +573,7 @@ export default function WorkcraftDiagnosis() {
           <span>실시간 예상 견적</span>
           <h3>{won(average)}</h3>
           <p>예상 범위 {won(min)}~{won(max)} · {duration} · VAT 별도</p>
+          {workcraftPromotionOpen && <small className="estimate-promotion-inline">프로모션 적용 전 정상 가격 · 계약 시 추가 기능 1개 개발비 100% 지원</small>}
         </div>
         <div className="estimate-live-actions">
           <button type="button" className="button button-primary" onClick={issueQuote}>예상 견적 발행</button>
@@ -575,6 +598,12 @@ export default function WorkcraftDiagnosis() {
               <div><span>예상 견적 범위</span><strong>{won(issued.min)} ~ {won(issued.max)}</strong></div>
               <button type="button" className="button button-secondary print-hidden" onClick={() => window.print()}>인쇄 · PDF 저장</button>
             </div>
+            {workcraftPromotionOpen && (
+              <div className="quote-promotion-note">
+                <div><span>출시 프로모션</span><strong>추가 기능 1개 개발비 100% 지원</strong></div>
+                <p>위 견적은 프로모션 적용 전 정상 가격입니다. 최종 계약서에 포함되는 추가 기능 중 원하는 1개를 선택할 수 있으며 옵션 금액 상한은 없습니다. 기본 구축비·월 유지관리비·제3자 비용·표준 범위 밖 추가 요구사항은 제외됩니다.</p>
+              </div>
+            )}
             <div className="quote-disclaimer">
               <b>예상 견적 안내</b>
               <p>본 견적은 고객이 선택한 기능과 입력 정보를 기준으로 자동 산출된 예상 금액이며 최종 계약금액이 아닙니다. 실제 업무 흐름, 사용자 수, 데이터 구조, 외부 연동, 보안 요구사항 및 개발 난이도를 현장에서 확인한 뒤 최종 금액과 일정이 확정됩니다.</p>
@@ -616,7 +645,22 @@ export default function WorkcraftDiagnosis() {
                 <label>의사결정자 현장 참석 *<select name="decisionMaker" required defaultValue=""><option value="" disabled>선택</option><option>가능합니다</option><option>일정에 따라 가능합니다</option><option>참석이 어렵습니다</option></select></label>
                 <label>현재 업무자료 확인 가능 여부<select name="materials" defaultValue=""><option value="">선택</option><option>엑셀·시트·문서·장부·화면 확인 가능</option><option>일부 자료만 확인 가능</option><option>현장에서 협의 필요</option></select></label>
               </div>
-              <label className="business-honeypot" aria-hidden="true">웹사이트<input name="website" tabIndex={-1} autoComplete="off" /></label>
+              {workcraftPromotionOpen && (
+                <div className="form-promotion-terms">
+                  <b>선착순 프로모션 적용 조건</b>
+                  <p>유료 구축 계약 기업당 1회, 최종 계약에 포함되는 추가 기능 1개의 BGK 개발비에 적용됩니다.</p>
+                  <div className="form-promotion-exclusions">
+                    {workcraftPromotion.exclusions.map((item) => <span key={item}>· {item}</span>)}
+                  </div>
+                  <small>{workcraftPromotion.countRule}</small>
+                </div>
+              )}
+              {workcraftPromotionOpen && (
+                <div className="form-consent">
+                  <input id="promotion-agreement" name="promotionAcknowledged" type="checkbox" value="확인" required />
+                  <label htmlFor="promotion-agreement">프로모션 혜택과 제외 항목을 확인했습니다.</label>
+                </div>
+              )}
               <div className="form-consent">
                 <input id="estimate-agreement" type="checkbox" required />
                 <label htmlFor="estimate-agreement">온라인 견적은 예상 금액이며, 현장진단 후 최종 견적과 개발범위서가 별도로 확정됨을 확인했습니다.</label>

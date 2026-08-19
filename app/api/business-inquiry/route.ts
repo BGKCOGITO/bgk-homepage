@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { workcraftPromotion, workcraftPromotionOpen } from "@/data/workcraftPromotion";
 
 export const runtime = "nodejs";
 
@@ -21,7 +22,7 @@ type InquiryPayload = {
   plan?: string;
   addons?: string;
   estimate?: string;
-  website?: string;
+  promotionAcknowledged?: string;
 };
 
 function clean(value: unknown, max = 3000) {
@@ -62,11 +63,8 @@ export async function POST(request: Request) {
     const plan = clean(body.plan, 240);
     const addons = clean(body.addons, 2500);
     const estimate = clean(body.estimate, 500);
-    const website = clean(body.website, 200);
-
-    if (website) return NextResponse.json({ ok: true });
-
-    if (!company || !manager || !phone || !businessAddress || !industry || !employees || !pain || !preferredDate || !decisionMaker || !quoteId || !plan || !estimate) {
+    const promotionAcknowledged = clean(body.promotionAcknowledged, 40);
+    if (!company || !manager || !phone || !businessAddress || !industry || !employees || !pain || !preferredDate || !decisionMaker || !quoteId || !plan || !estimate || (workcraftPromotionOpen && !promotionAcknowledged)) {
       return NextResponse.json({ message: "필수 항목을 모두 입력해 주세요." }, { status: 400 });
     }
 
@@ -103,6 +101,7 @@ export async function POST(request: Request) {
       `기본 구축: ${plan}`,
       `추가 기능: ${addons || "없음"}`,
       `온라인 예상견적: ${estimate}`,
+      `출시 프로모션: ${workcraftPromotionOpen ? `${workcraftPromotion.benefit} / 조건 확인 ${promotionAcknowledged || "미확인"}` : "마감"}`,
       `구축 희망시기: ${desiredStart || "미입력"}`,
       `희망 방문일: ${preferredDate}`,
       `의사결정자 참석: ${decisionMaker}`,
@@ -132,6 +131,7 @@ export async function POST(request: Request) {
             ${row("기본 구축", plan)}
             ${row("추가 기능", addons || "없음")}
             ${row("온라인 예상견적", estimate)}
+            ${row("출시 프로모션", workcraftPromotionOpen ? `${workcraftPromotion.benefit} / 조건 확인 ${promotionAcknowledged || "미확인"}` : "마감")}
             ${row("구축 희망시기", desiredStart || "미입력")}
             ${row("희망 방문일", preferredDate)}
             ${row("의사결정자 참석", decisionMaker)}

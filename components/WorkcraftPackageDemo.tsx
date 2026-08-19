@@ -101,7 +101,7 @@ const DEMOS: Record<WorkcraftDemoId, DemoPackage> = {
     id: "suite",
     code: "WORKCRAFT SUITE",
     title: "재고·발주·문서 통합 운영",
-    subtitle: "관리 Web·현장 App·Windows Program을 하나의 데이터로 연결한 예시",
+    subtitle: "관리 Web·현장 App·Windows 업무 클라이언트를 하나의 데이터로 연결한 예시",
     brand: "STOCK FLOW",
     platforms: [
       {
@@ -132,15 +132,15 @@ const DEMOS: Record<WorkcraftDemoId, DemoPackage> = {
       },
       {
         id: "pc",
-        label: "Windows Program",
-        caption: "사무실에서 대량입력·문서·라벨을 처리하는 PC 프로그램",
+        label: "Windows 업무 클라이언트",
+        caption: "사무실에서 대량입력·문서·라벨을 처리하는 Windows 업무 클라이언트",
         screens: [
           { id: "transactions", label: "입출고 처리", title: "대량 입출고 처리", description: "여러 품목의 수량과 창고를 빠르게 입력합니다.", kind: "pc-transactions", outcome: "키보드 중심의 빠른 입력으로 반복 사무작업을 줄입니다." },
           { id: "purchase", label: "발주서", title: "발주서 작성·발행", description: "거래처, 품목, 단가를 불러와 발주서를 만듭니다.", kind: "pc-purchase", outcome: "표준 양식의 발주서를 즉시 PDF·인쇄로 발행합니다." },
           { id: "statement", label: "거래명세서", title: "거래명세서 발행", description: "출고 내역으로 거래명세서를 자동 작성합니다.", kind: "pc-statement", outcome: "동일 내용을 엑셀과 문서에 반복 입력하지 않습니다." },
           { id: "labels", label: "라벨 출력", title: "바코드·품목 라벨 출력", description: "선택 품목을 라벨 규격에 맞춰 출력합니다.", kind: "pc-labels", outcome: "창고 라벨과 바코드를 정해진 규격으로 바로 출력합니다." },
           { id: "import", label: "대량 엑셀", title: "엑셀 대량 등록", description: "표준 양식으로 품목·재고·거래처를 일괄 등록합니다.", kind: "pc-import", outcome: "기존 자료를 검증한 뒤 시스템으로 빠르게 이전합니다." },
-          { id: "approval", label: "결재 현황", title: "결재·문서 현황", description: "승인대기 문서와 의견·이력을 확인합니다.", kind: "pc-approvals", outcome: "발주·정산 문서의 승인 상태를 사무실 프로그램에서 관리합니다." },
+          { id: "approval", label: "결재 현황", title: "결재·문서 현황", description: "승인대기 문서와 의견·이력을 확인합니다.", kind: "pc-approvals", outcome: "발주·정산 문서의 승인 상태를 사무실 업무 클라이언트에서 관리합니다." },
         ],
       },
     ],
@@ -179,11 +179,11 @@ function DemoScreenContent({ kind }: { kind: string }) {
     case "people":
       return <><div className="demo-toolbar-row"><div className="demo-search">직원명·사번 검색</div><button>+ 직원 등록</button></div><DemoTable headers={["직원", "부서·직책", "로그인 ID", "근무상태", "계정"]} rows={[[<b key="a">김현우</b>,"운영팀 · 팀장","E-1004",<Status key="b">근무중</Status>,<Status key="c" tone="blue">정상</Status>],[<b key="d">이서윤</b>,"현장팀 · 매니저","E-1012",<Status key="e" tone="amber">휴무예정</Status>,<Status key="f" tone="blue">정상</Status>],[<b key="g">박민준</b>,"지원팀 · 사원","E-1028",<Status key="h" tone="gray">퇴사</Status>,<Status key="i" tone="gray">비활성</Status>]]} /></>;
     case "attendance":
-      return <div className="demo-content-grid attendance"><section className="demo-qr-panel"><span>회사 출퇴근 QR</span><div className="demo-qr-code">▦</div><b>NOVA-HQ-01</b><small>현재 위치 · 본사 1층</small></section><section className="demo-panel"><header><div><span>오늘 출퇴근 기록</span><strong>2026.08.18</strong></div><button>엑셀 다운로드</button></header><DemoTable headers={["직원", "출근", "퇴근", "근무시간", "상태"]} rows={[["김현우","08:54","-","진행중",<Status key="a">정상</Status>],["이서윤","09:08","-","진행중",<Status key="b" tone="amber">지각</Status>],["최민아","08:47","18:02","8시간 15분",<Status key="c" tone="blue">완료</Status>]]} /></section></div>;
+      return <div className="demo-content-grid attendance"><section className="demo-qr-panel"><span>회사 출퇴근 QR</span><div className="demo-qr-code">▦</div><b>NOVA-HQ-01</b><small>현재 위치 · 본사 1층</small></section><section className="demo-panel"><header><div><span>오늘 출퇴근 기록</span><strong>2026.08.18</strong></div><button>엑셀 저장</button></header><DemoTable headers={["직원", "출근", "퇴근", "근무시간", "상태"]} rows={[["김현우","08:54","-","진행중",<Status key="a">정상</Status>],["이서윤","09:08","-","진행중",<Status key="b" tone="amber">지각</Status>],["최민아","08:47","18:02","8시간 15분",<Status key="c" tone="blue">완료</Status>]]} /></section></div>;
     case "work-analytics":
       return <><div className="demo-stat-grid three"><StatCard label="평균 근무시간" value="8h 07m" note="전월 +12분" /><StatCard label="총 연장근무" value="42h" note="전월 -8%" /><StatCard label="지각률" value="2.1%" note="목표 3% 이하" /></div><div className="demo-content-grid two"><section className="demo-panel"><header><div><span>부서별 월 근무시간</span><strong>8월 누계</strong></div></header><DemoBarChart labels={["운영","현장","지원","관리"]} values={[82,96,64,71]} /></section><section className="demo-panel"><header><div><span>직원별 집계</span><strong>근무시간 상위</strong></div></header><DemoTable headers={["직원","정규","연장","합계"]} rows={[["김현우","152h","8h","160h"],["이서윤","148h","6h","154h"],["최민아","151h","2h","153h"]]} /></section></div></>;
     case "chat":
-      return <div className="demo-chat-layout"><aside><strong>사내 채팅</strong><button className="active"><b>운영팀</b><small>오늘 현장 일정 확인...</small><i>3</i></button><button><b>전체 공지방</b><small>8월 안전교육 자료</small></button><button><b>관리자방</b><small>월말 정산 확인</small></button></aside><section><header><div><strong>운영팀</strong><span>참여자 8명</span></div><button>파일함</button></header><div className="demo-message-area"><p><small>김현우 · 09:12</small>오늘 강남 현장 일정 확인 부탁드립니다.</p><p className="mine"><small>나 · 09:14</small>확인했습니다. 최신 일정표를 첨부합니다.</p><div className="demo-file-message"><b>현장일정_0818.pdf</b><span>1.8 MB · 다운로드</span></div><p><small>이서윤 · 09:20</small>성수 현장 인원 1명 변경됐습니다.</p></div><footer><span>메시지를 입력하세요.</span><button>전송</button></footer></section></div>;
+      return <div className="demo-chat-layout"><aside><strong>사내 채팅</strong><button className="active"><b>운영팀</b><small>오늘 현장 일정 확인...</small><i>3</i></button><button><b>전체 공지방</b><small>8월 안전교육 자료</small></button><button><b>관리자방</b><small>월말 정산 확인</small></button></aside><section><header><div><strong>운영팀</strong><span>참여자 8명</span></div><button>파일함</button></header><div className="demo-message-area"><p><small>김현우 · 09:12</small>오늘 강남 현장 일정 확인 부탁드립니다.</p><p className="mine"><small>나 · 09:14</small>확인했습니다. 최신 일정표를 첨부합니다.</p><div className="demo-file-message"><b>현장일정_0818.pdf</b><span>1.8 MB · 파일 받기</span></div><p><small>이서윤 · 09:20</small>성수 현장 인원 1명 변경됐습니다.</p></div><footer><span>메시지를 입력하세요.</span><button>전송</button></footer></section></div>;
     case "files":
       return <><div className="demo-toolbar-row"><div className="demo-search">파일명·등록자 검색</div><button>+ 파일 등록</button></div><div className="demo-file-grid"><article><i>PDF</i><b>안전교육_매뉴얼.pdf</b><span>운영팀 · 2.4MB</span></article><article><i>XLS</i><b>8월_근무일정.xlsx</b><span>관리팀 · 540KB</span></article><article><i>DOC</i><b>현장업무_체크리스트.docx</b><span>현장팀 · 860KB</span></article><article><i>IMG</i><b>현장배치도.png</b><span>운영팀 · 3.1MB</span></article></div></>;
     case "settings":
@@ -249,7 +249,7 @@ function DemoScreenContent({ kind }: { kind: string }) {
     case "pc-labels":
       return <div className="demo-label-workspace"><aside><strong>라벨 출력 설정</strong><label>라벨 규격<select><option>40 × 30 mm</option></select></label><label>출력 품목<select><option>부품 A-120</option></select></label><label>출력 수량<input value="8" readOnly /></label><button>미리보기 새로고침</button></aside><section><header><b>인쇄 미리보기</b><span>8 labels</span></header><div className="demo-label-grid">{Array.from({length:8}).map((_,i)=><article key={i}><small>STOCK FLOW</small><b>A-120</b><div>||||| || ||||</div><span>LOT-260818-A12</span></article>)}</div><footer><button>프린터 설정</button><button>라벨 출력</button></footer></section></div>;
     case "pc-import":
-      return <div className="demo-import-workspace"><header><span>1. 파일 선택</span><span className="active">2. 데이터 검증</span><span>3. 등록 완료</span></header><div className="demo-import-summary"><StatCard label="전체 행" value="1,248" /><StatCard label="정상" value="1,221" /><StatCard label="확인 필요" value="27" /></div><DemoTable headers={["행","품목코드","품목명","검증결과"]} rows={[["12","A-120","메인 부품 A",<Status key="a">정상</Status>],["48","B-042","원자재 B",<Status key="b" tone="amber">단가 확인</Status>],["107","-","포장재 20호",<Status key="c" tone="red">코드 누락</Status>]]} /><footer><button>오류 파일 다운로드</button><button>정상 1,221건 등록</button></footer></div>;
+      return <div className="demo-import-workspace"><header><span>1. 파일 선택</span><span className="active">2. 데이터 검증</span><span>3. 등록 완료</span></header><div className="demo-import-summary"><StatCard label="전체 행" value="1,248" /><StatCard label="정상" value="1,221" /><StatCard label="확인 필요" value="27" /></div><DemoTable headers={["행","품목코드","품목명","검증결과"]} rows={[["12","A-120","메인 부품 A",<Status key="a">정상</Status>],["48","B-042","원자재 B",<Status key="b" tone="amber">단가 확인</Status>],["107","-","포장재 20호",<Status key="c" tone="red">코드 누락</Status>]]} /><footer><button>오류 파일 받기</button><button>정상 1,221건 등록</button></footer></div>;
     case "pc-approvals":
       return <div className="demo-pc-approval"><aside><header><b>결재 대기</b><span>5</span></header><button className="active"><small>발주서</small><b>PO-26018</b><span>12,400,000원</span></button><button><small>재고조정</small><b>AD-26007</b><span>수량 -12</span></button><button><small>거래처등록</small><b>새빛산업</b><span>신규</span></button></aside><section><header><div><small>발주서 PO-26018</small><b>한빛부품 · 부품 A-120 외 2종</b></div><Status tone="amber">팀장 승인 대기</Status></header><div className="demo-doc-summary"><span>요청부서 <b>구매팀</b></span><span>납품일 <b>08.22</b></span><span>합계 <b>12,400,000원</b></span></div><div className="demo-approval-steps"><span className="done">담당자 완료</span><span className="active">팀장 검토</span><span>대표 승인</span></div><textarea value="검토 의견을 입력하세요." readOnly /><footer><button>반려</button><button>승인</button></footer></section></div>;
     default:
@@ -330,7 +330,7 @@ export default function WorkcraftPackageDemo({ demoId, onClose, onApply }: Props
             <div className={`workcraft-demo-preview preview-${platform.id}`}>
               {platform.id === "web" && <div className="workcraft-demo-browser"><div><i /><i /><i /><span>https://{demo.brand.toLowerCase().replaceAll(" ", "-")}.workcraft.app/{screen.id}</span></div><section><DemoScreenContent kind={screen.kind} /></section></div>}
               {platform.id === "app" && <div className="workcraft-demo-mobile-stage"><div className="workcraft-demo-phone"><div className="workcraft-demo-phone-top"><i /></div><section><DemoScreenContent kind={screen.kind} /></section><div className="workcraft-demo-phone-home" /></div><aside><span>APP RESULT</span><h4>{screen.title}</h4><p>{screen.outcome}</p><ul><li>고객사 로고·대표색상 적용</li><li>실제 업무용어와 입력항목으로 변경</li><li>Web 데이터와 실시간 연동</li></ul></aside></div>}
-              {platform.id === "pc" && <div className="workcraft-demo-window"><header><span><i>{demo.brand.slice(0, 1)}</i>{demo.brand} Windows Program</span><b>—　□　×</b></header><section><DemoScreenContent kind={screen.kind} /></section></div>}
+              {platform.id === "pc" && <div className="workcraft-demo-window"><header><span><i>{demo.brand.slice(0, 1)}</i>{demo.brand} Windows 업무 클라이언트</span><b>—　□　×</b></header><section><DemoScreenContent kind={screen.kind} /></section></div>}
             </div>
 
             <div className="workcraft-demo-result"><div><span>이 메뉴를 구현하면</span><p>{screen.outcome}</p></div><div><span>실제 구축 시 변경 가능</span><p>로고·색상·메뉴·입력항목·권한·계산식·화면 배치</p></div></div>
