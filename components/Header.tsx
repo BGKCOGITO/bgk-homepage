@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const items = [
   ["회사소개", "#about"],
   ["사업", "#services"],
-  ["WORKCRAFT", "/business"],
+  ["WORKCRAFT", "https://workcraft.bgkcogito.co.kr"],
   ["진행방식", "#principles"],
   ["대표소개", "#founder"],
 ] as const;
@@ -36,7 +36,7 @@ export default function Header() {
           {items.map(([label, href]) => (
             <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>
           ))}
-          <a className="nav-cta" href="/business#diagnosis" onClick={() => setOpen(false)}>온라인 진단</a>
+          <a className="nav-cta" href="https://workcraft.bgkcogito.co.kr/#/quote" target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>온라인 진단</a>
         </nav>
       </div>
     </header>

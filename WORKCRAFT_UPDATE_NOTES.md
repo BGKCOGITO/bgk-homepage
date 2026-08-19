@@ -1,3 +1,10 @@
+# WorkCraft official web linkage update
+
+- Official WorkCraft URL: https://workcraft.bgkcogito.co.kr
+- BGK homepage WORKCRAFT navigation and CTA now point to the independent WorkCraft web.
+- /business remains a BGK-operated service bridge page and exposes the same business operator information for Kakao business review.
+- Business number/address are sourced from data/site.ts.
+
 # BGK WORKCRAFT 홈페이지 업데이트
 
 ## 2026-08-18 반영사항

@@ -11,10 +11,10 @@ const serviceLines = [
     title: "기업의 업무를 직접 보고, 전용 시스템으로 구축합니다.",
     text: "온라인 진단과 예상 견적을 시작으로 현장을 방문해 실제 업무를 확인한 뒤 Web·App·PC 프로그램과 자동화를 설계합니다.",
     points: ["현장진단형 맞춤 구축", "자동 예상견적", "개발·배포·운영관리"],
-    href: "/business",
-    action: "WORKCRAFT 살펴보기",
+    href: "https://workcraft.bgkcogito.co.kr",
+    action: "WORKCRAFT 공식 웹",
     tone: "workcraft",
-    external: false,
+    external: true,
   },
   {
     eyebrow: "DELIVERY OPERATIONS",
@@ -67,7 +67,7 @@ export default function Home() {
               설명만 하는 컨설팅이 아니라 기획, 개발, 배포와 운영까지 직접 수행합니다.
             </p>
             <div className="hero-buttons">
-              <Link className="button button-primary" href="/business#diagnosis">WORKCRAFT 온라인 진단</Link>
+              <a className="button button-primary" href="https://workcraft.bgkcogito.co.kr/#/quote" target="_blank" rel="noreferrer">WORKCRAFT 온라인 진단</a>
               <a className="button button-ghost-light" href="#services">BGK 사업 보기</a>
             </div>
             <div className="bgk2-hero-facts">
@@ -168,7 +168,8 @@ export default function Home() {
                 엑셀, 시트, 문서와 담당자의 실제 업무를 확인한 뒤 회사에 맞는 시스템을 구축합니다.
                 온라인 진단에서 패키지와 기능을 선택하면 예상 견적을 먼저 확인할 수 있습니다.
               </p>
-              <Link className="button button-primary" href="/business">화면 예시·예상 견적 보기</Link>
+              <p className="bgk2-workcraft-operator">WORKCRAFT는 비지케이(BGK)가 직접 운영하는 기업 맞춤형 업무 시스템 구축 서비스입니다.</p>
+              <a className="button button-primary" href="https://workcraft.bgkcogito.co.kr" target="_blank" rel="noreferrer">WORKCRAFT 공식 웹 · 예상견적</a>
             </div>
             <div className="bgk2-package-list">
               <article><span>CORE</span><strong>Web</strong><b>390만원~</b></article>
@@ -225,7 +226,7 @@ export default function Home() {
         </dl>
         <div className="footer-links">
           <Link href="/privacy">개인정보처리방침</Link>
-          <Link href="/business">WORKCRAFT</Link>
+          <a href="https://workcraft.bgkcogito.co.kr" target="_blank" rel="noreferrer">WORKCRAFT</a>
           <a href="https://delivo.bgkcogito.co.kr" target="_blank" rel="noreferrer">DELIVO</a>
           <a href="https://pawu.bgkcogito.co.kr" target="_blank" rel="noreferrer">PAWU</a>
         </div>
