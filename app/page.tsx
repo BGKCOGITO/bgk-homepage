@@ -158,7 +158,7 @@ export default function Home() {
           <div className="section-intro split-intro">
             <div>
               <p className="kicker">WHAT BGK DOES</p>
-              <h2>두 가지 방식으로<br />기업의 문제를 해결합니다.</h2>
+              <h2>BGK는 맞춤 구축과 자체 제품으로 문제를 해결합니다.</h2>
             </div>
             <p>
               고객사에 필요한 시스템은 현장에서 맞춤 구축하고, 특정 산업에서 반복되는 문제는 BGK의 자체 제품으로 운영합니다.
@@ -187,7 +187,7 @@ export default function Home() {
           <Reveal>
             <div className="section-intro centered narrow">
               <p className="kicker">BGK BUSINESS</p>
-              <h2>각 사업이 해결하는 문제를<br />명확하게 구분했습니다.</h2>
+              <h2>필요한 서비스와 제품을 한눈에 확인하세요.</h2>
               <p>고객이 필요한 서비스와 제품을 바로 찾을 수 있도록 핵심만 간결하게 정리했습니다.</p>
             </div>
             <div className="bgk2-service-grid">
@@ -223,8 +223,7 @@ export default function Home() {
             <div className="bgk2-trust-head">
               <div>
                 <p className="kicker kicker-light">HOW BGK BUILDS TRUST</p>
-                <h2>회사 소개보다 중요한 건,
-                  <br />프로젝트를 어떻게 진행하는지입니다.</h2>
+                <h2>BGK가 프로젝트를 진행하는 기준</h2>
               </div>
               <p>
                 BGK는 과장된 실적 수치 대신 고객이 계약 전에 확인할 수 있는 범위, 책임, 비용과 진행 절차를 명확하게 안내합니다.
@@ -253,7 +252,7 @@ export default function Home() {
       <section id="principles" className="corporate-section shell bgk2-process">
         <Reveal>
           <div className="section-intro split-intro">
-            <div><p className="kicker">HOW WE WORK</p><h2>신뢰는 화려한 문구보다<br />진행 방식에서 만들어집니다.</h2></div>
+            <div><p className="kicker">HOW WE WORK</p><h2>프로젝트는 네 단계로 명확하게 진행합니다.</h2></div>
             <p>업무를 확인하고, 범위를 문서로 정리하고, 직접 개발한 뒤 실제 운영에서 개선합니다.</p>
           </div>
           <div className="bgk2-process-grid">
@@ -275,7 +274,7 @@ export default function Home() {
           </Reveal>
           <Reveal className="founder-corporate-copy">
             <p className="kicker">FOUNDER & CEO</p>
-            <h2>현장을 경험한 사람이<br />현장을 위한 시스템을 만듭니다.</h2>
+            <h2>현장 경험을 실제 시스템 설계에 반영합니다.</h2>
             <p>
               택배기사와 현장 관리 업무를 직접 경험하며 반복되는 확인, 배정, 정산과 소통의 비효율을 체감했습니다.
               BGK는 그 문제를 아이디어에 머물게 하지 않고 DELIVO, PAWU와 기업 맞춤 시스템으로 구현합니다.
@@ -291,8 +290,7 @@ export default function Home() {
           <div className="bgk2-final-contact-panel">
             <div>
               <p className="kicker kicker-light">START WITH THE RIGHT SERVICE</p>
-              <h2>필요한 사업을 선택해
-                <br />상세 내용을 확인하세요.</h2>
+              <h2>필요한 사업의 상세 내용을 확인하세요.</h2>
               <p>기업 맞춤 구축은 WORKCRAFT에서, 택배 운영은 DELIVO에서, 반려동물 의료 연결은 PAWU에서 확인할 수 있습니다.</p>
             </div>
             <div className="bgk2-final-links">
