@@ -49,6 +49,29 @@ const operatingSteps = [
   ["04", "운영 개선", "배포 후 오류 대응, 기능 개선과 추가 개발을 이어갑니다."],
 ];
 
+const trustStandards = [
+  {
+    label: "01 · SCOPE",
+    title: "범위를 먼저 문서화합니다.",
+    text: "개발 전에 견적, 포함 기능, 제외 범위와 검수 기준을 문서로 확정합니다.",
+  },
+  {
+    label: "02 · BUILD",
+    title: "기획부터 배포까지 직접 수행합니다.",
+    text: "외주 중개가 아니라 BGK가 서비스 구조 설계, 개발, 배포와 운영 개선을 직접 진행합니다.",
+  },
+  {
+    label: "03 · OPERATION",
+    title: "실제 운영을 기준으로 설계합니다.",
+    text: "화면 수보다 업무 흐름, 권한, 데이터와 반복 작업이 실제로 줄어드는지를 우선합니다.",
+  },
+  {
+    label: "04 · TRANSPARENCY",
+    title: "비용과 변경 절차를 투명하게 안내합니다.",
+    text: "계약 범위를 벗어난 추가 작업은 사유, 금액과 일정을 먼저 안내하고 동의 후 진행합니다.",
+  },
+];
+
 export default function Home() {
   return (
     <main id="top" className="home-page bgk2-home">
@@ -60,13 +83,13 @@ export default function Home() {
           <div className="bgk2-hero-copy">
             <p className="kicker kicker-light">BGK BUSINESS TECHNOLOGY</p>
             <h1>
-              현장의 문제를 이해하고,
+              현장의 업무를 이해하고,
               <br />
-              <span>매일 쓰는 시스템으로 만듭니다.</span>
+              <span>실제로 쓰이는 시스템을 만듭니다.</span>
             </h1>
             <p>
-              BGK는 기업 맞춤 구축사업 WORKCRAFT와 자체 제품 DELIVO·PAWU를 직접 개발·운영합니다.
-              말로만 제안하는 컨설팅이 아니라 기획, 개발, 배포와 운영까지 직접 수행합니다.
+              BGK는 기업 맞춤 구축 서비스 WORKCRAFT와 자체 제품 DELIVO·PAWU를 개발·운영합니다.
+              업무 구조를 정리하고 필요한 시스템을 설계해 개발, 배포와 운영 개선까지 직접 이어갑니다.
             </p>
             <div className="hero-buttons">
               <Link className="button button-primary" href="/business">WORKCRAFT 자세히 보기</Link>
@@ -194,6 +217,39 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="corporate-section bgk2-trust-section" aria-label="BGK 프로젝트 운영 기준">
+        <div className="shell">
+          <Reveal>
+            <div className="bgk2-trust-head">
+              <div>
+                <p className="kicker kicker-light">HOW BGK BUILDS TRUST</p>
+                <h2>회사 소개보다 중요한 건,
+                  <br />프로젝트를 어떻게 진행하는지입니다.</h2>
+              </div>
+              <p>
+                BGK는 과장된 실적 수치 대신 고객이 계약 전에 확인할 수 있는 범위, 책임, 비용과 진행 절차를 명확하게 안내합니다.
+                WORKCRAFT와 자체 제품 모두 같은 개발 원칙을 적용합니다.
+              </p>
+            </div>
+            <div className="bgk2-trust-grid">
+              {trustStandards.map((item) => (
+                <article key={item.label}>
+                  <span>{item.label}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+            <div className="bgk2-trust-foot">
+              <div><span>법적 사업자</span><strong>비지케이(BGK)</strong></div>
+              <div><span>대표</span><strong>{site.representative}</strong></div>
+              <div><span>사업자등록번호</span><strong>{site.businessNumber}</strong></div>
+              <div><span>서비스 범위</span><strong>Web · App · Windows · AI</strong></div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section id="principles" className="corporate-section shell bgk2-process">
         <Reveal>
           <div className="section-intro split-intro">
@@ -228,6 +284,24 @@ export default function Home() {
             <div className="founder-signature"><strong>{site.representative}</strong><span>Founder & CEO · BGK</span></div>
           </Reveal>
         </div>
+      </section>
+
+      <section className="corporate-section shell bgk2-final-contact">
+        <Reveal>
+          <div className="bgk2-final-contact-panel">
+            <div>
+              <p className="kicker kicker-light">START WITH THE RIGHT SERVICE</p>
+              <h2>필요한 사업을 선택해
+                <br />상세 내용을 확인하세요.</h2>
+              <p>기업 맞춤 구축은 WORKCRAFT에서, 택배 운영은 DELIVO에서, 반려동물 의료 연결은 PAWU에서 확인할 수 있습니다.</p>
+            </div>
+            <div className="bgk2-final-links">
+              <Link href="/business"><strong>WORKCRAFT</strong><span>기업 맞춤 시스템 구축</span><b>자세히 보기 →</b></Link>
+              <a href="https://delivo.bgkcogito.co.kr" target="_blank" rel="noreferrer"><strong>DELIVO</strong><span>택배 운영 플랫폼</span><b>공식 홈페이지 →</b></a>
+              <a href="https://pawu.bgkcogito.co.kr" target="_blank" rel="noreferrer"><strong>PAWU</strong><span>반려동물 의료 연결</span><b>서비스 소개 →</b></a>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <footer className="corporate-footer shell">
