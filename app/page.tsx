@@ -194,49 +194,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="corporate-section shell bgk2-workcraft">
-        <Reveal>
-          <div className="bgk2-workcraft-panel">
-            <div>
-              <p className="kicker kicker-light">BGK WORKCRAFT</p>
-              <h2>엑셀·문서 업무를<br />전용 시스템으로 바꿉니다.</h2>
-              <p>
-                현장에서 실제 업무를 확인한 뒤 회사에 맞는 시스템을 구축합니다.
-                Web만 필요한 회사부터 App·Windows까지 함께 필요한 회사까지 단계별로 선택할 수 있습니다.
-              </p>
-              <p className="bgk2-workcraft-clarity">WORKCRAFT는 고객사별 계약에 따라 진행하는 유료 맞춤 개발·구축 서비스입니다.</p>
-              <Link className="button button-primary" href="/business">WORKCRAFT 상세 페이지</Link>
-            </div>
-            <div className="bgk2-package-list">
-              <article>
-                <span>CORE</span>
-                <div>
-                  <strong>Web 구축형</strong>
-                  <small>사내 업무용 웹 시스템</small>
-                </div>
-                <b>390만원~</b>
-              </article>
-              <article>
-                <span>CONNECT</span>
-                <div>
-                  <strong>Web + App 구축형</strong>
-                  <small>관리자 웹 + Android 앱 1종</small>
-                </div>
-                <b>690만원~</b>
-              </article>
-              <article>
-                <span>SUITE</span>
-                <div>
-                  <strong>Web + App + Windows 구축형</strong>
-                  <small>통합 운영환경 구축</small>
-                </div>
-                <b>990만원~</b>
-              </article>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
       <section id="principles" className="corporate-section shell bgk2-process">
         <Reveal>
           <div className="section-intro split-intro">
