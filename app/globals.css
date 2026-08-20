@@ -1650,3 +1650,39 @@ main { overflow: clip; }
   .addon-copy b { font-size: 14px; }
   .addon-card > strong { font-size: 15px; }
 }
+
+/* 2026-08-20 WORKCRAFT introduction-only flow */
+.pricing-guide-section{background:linear-gradient(180deg,#f7f9fc 0%,#eef3f9 100%)}
+.workcraft-pricing-guide{display:grid;gap:34px;margin-top:48px}
+.pricing-plan-grid-static{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pricing-plan-static{display:flex;flex-direction:column;min-height:590px;padding:34px;border:1px solid #d9e3ef;border-radius:28px;background:#fff;box-shadow:0 18px 50px rgba(15,35,65,.07)}
+.pricing-plan-label{color:#2f6cae;font-size:13px;font-weight:900;letter-spacing:.14em}
+.pricing-plan-static h3{margin:28px 0 8px;color:var(--navy-950);font-size:30px;line-height:1.18;letter-spacing:-.04em}
+.pricing-plan-title{margin:0;color:#26394f;font-size:20px;font-weight:850;line-height:1.45}
+.pricing-plan-platform{display:inline-flex;align-self:flex-start;margin-top:16px;padding:9px 13px;border-radius:999px;background:#eef4fb;color:#245d9d;font-size:14px;line-height:1.45}
+.pricing-plan-price{margin-top:25px;color:#115db1;font-size:44px;line-height:1;letter-spacing:-.055em}
+.pricing-plan-description{margin:20px 0 18px;color:#586779;font-size:15px;line-height:1.75}
+.pricing-plan-static ul{list-style:none;padding:0;margin:auto 0 0;display:grid;gap:0;border-top:1px solid #e7edf4}
+.pricing-plan-static li{position:relative;padding:12px 0 12px 19px;border-bottom:1px solid #edf1f5;color:#384b60;font-size:14px;line-height:1.55}
+.pricing-plan-static li:before{content:"";position:absolute;left:1px;top:19px;width:7px;height:7px;border-radius:50%;background:#4f91dc}
+.pricing-addon-static{padding:34px;border:1px solid #d9e3ef;border-radius:28px;background:#fff;box-shadow:0 18px 50px rgba(15,35,65,.06)}
+.pricing-addon-intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:end;padding-bottom:26px;border-bottom:1px solid #e4eaf1}
+.pricing-addon-intro span{color:#2c69ac;font-size:12px;font-weight:900;letter-spacing:.14em}
+.pricing-addon-intro h3{margin:8px 0 0;color:var(--navy-950);font-size:30px;letter-spacing:-.04em}
+.pricing-addon-intro p{margin:0;color:#607083;font-size:14px;line-height:1.75}
+.pricing-addon-group-static{padding-top:28px}
+.pricing-addon-group-static h4{margin:0 0 15px;color:#173b66;font-size:21px;letter-spacing:-.025em}
+.pricing-addon-grid-static{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pricing-addon-item-static{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:66px;padding:15px 17px;border:1px solid #dde5ef;border-radius:15px;background:#f8fafc}
+.pricing-addon-item-static span{color:#34475c;font-size:14px;font-weight:750;line-height:1.45}
+.pricing-addon-item-static strong{flex:0 0 auto;color:#155fae;font-size:16px;letter-spacing:-.02em}
+.pricing-external-cta{display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;padding:36px 40px;border-radius:28px;background:linear-gradient(135deg,#0b213d,#154572);color:#fff;box-shadow:0 22px 60px rgba(11,33,61,.18)}
+.pricing-external-cta span{color:#91b6ff;font-size:12px;font-weight:900;letter-spacing:.13em}
+.pricing-external-cta h3{margin:9px 0 9px;font-size:28px;line-height:1.35;letter-spacing:-.035em}
+.pricing-external-cta p{max-width:760px;margin:0;color:#cfdbeb;font-size:14px;line-height:1.75}
+.pricing-external-cta .button{white-space:nowrap}
+.pawu-install-actions{display:grid;gap:10px;margin-top:auto}
+.pawu-install-pending{width:100%;padding:13px 15px;border:1px solid #e1b7aa;border-radius:12px;background:#fff4f0;color:#a95543;font-size:13px;font-weight:850;cursor:not-allowed}
+.pawu-install-actions a{font-size:13px;font-weight:850;color:#c85f4b}
+@media(max-width:980px){.pricing-plan-grid-static{grid-template-columns:1fr}.pricing-plan-static{min-height:auto}.pricing-addon-grid-static{grid-template-columns:1fr 1fr}.pricing-external-cta{grid-template-columns:1fr}.pricing-external-cta .button{justify-self:start}}
+@media(max-width:700px){.pricing-plan-static,.pricing-addon-static{padding:24px}.pricing-plan-static h3{font-size:26px}.pricing-plan-price{font-size:38px}.pricing-addon-intro{grid-template-columns:1fr;gap:14px}.pricing-addon-grid-static{grid-template-columns:1fr}.pricing-external-cta{padding:26px 24px}.pricing-external-cta h3{font-size:24px}}

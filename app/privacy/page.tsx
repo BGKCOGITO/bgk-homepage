@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "개인정보처리방침",
-  description: "BGK 공식 홈페이지 및 WORKCRAFT 온라인 진단 개인정보처리방침",
+  description: "BGK 공식 홈페이지 개인정보처리방침",
   alternates: { canonical: "/privacy" },
 };
 
@@ -19,11 +19,11 @@ export default function PrivacyPage() {
 
         <section>
           <h2>1. 수집하는 개인정보 항목</h2>
-          <p>WORKCRAFT 온라인 진단 및 현장진단 신청 과정에서 회사명, 업종, 사업장 주소, 직원 수, 담당자명, 연락처, 이메일, 현재 관리방식, 업무 불편사항, 구축 희망시기, 방문 희망일, 의사결정자 참석 여부, 업무자료 확인 가능 여부와 선택한 구축 범위·예상견적 정보를 수집할 수 있습니다.</p>
+          <p>BGK 공식 홈페이지는 사업 및 서비스 소개를 목적으로 운영합니다. WORKCRAFT 예상견적 발행 및 신청정보 입력은 별도 WORKCRAFT 전용 시스템에서 진행되며, 해당 과정에서 필요한 개인정보 수집·이용 안내와 동의를 별도로 제공합니다.</p>
         </section>
         <section>
           <h2>2. 개인정보 처리 목적</h2>
-          <p>입력된 정보는 온라인 예상견적 발행, 프로젝트 적합성 검토, 현장방문 가능 여부 및 일정 안내, 최종 견적·계약 준비, 문의 이력 관리와 서비스 품질 개선을 위해 사용합니다.</p>
+          <p>BGK 홈페이지에서 별도로 수집하는 정보가 있는 경우 해당 화면에서 목적과 보유기간을 안내합니다. WORKCRAFT 견적·계약 관련 정보는 WORKCRAFT 전용 시스템의 안내와 동의 기준에 따라 처리합니다.</p>
         </section>
         <section>
           <h2>3. 개인정보 보유 및 파기</h2>

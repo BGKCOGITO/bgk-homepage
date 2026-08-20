@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import WorkcraftDiagnosis from "@/components/WorkcraftDiagnosis";
+import WorkcraftPricingGuide from "@/components/WorkcraftPricingGuide";
 import { site } from "@/data/site";
 import { workcraftPromotion, workcraftPromotionOpen } from "@/data/workcraftPromotion";
 
 export const metadata: Metadata = {
-  title: "WORKCRAFT | 기업 현장진단·맞춤 시스템 구축",
-  description: "BGK WORKCRAFT는 기업별 현장진단 후 Web·App·Windows 업무 시스템을 유료 맞춤 구축합니다. 출시 기념 선착순 10개 기업은 추가 기능 1개 개발비를 100% 지원합니다.",
+  title: "WORKCRAFT | 기업 맞춤 시스템 구축·가격 안내",
+  description: "BGK WORKCRAFT 기업 맞춤 시스템의 구축 패키지, 가격 기준, 진행 절차와 출시 프로모션을 안내합니다. 실제 예상견적 발행은 WORKCRAFT 전용 시스템에서 진행합니다.",
   alternates: { canonical: "/business" },
 };
 
@@ -18,8 +18,8 @@ const strengths = [
 ];
 
 const process = [
-  ["01", "온라인 진단", "구축 단계와 필요한 기능을 선택하고 현재 불편을 입력합니다."],
-  ["02", "예상 견적 발행", "선택한 범위를 기준으로 평균 구축비와 예상 기간을 확인합니다."],
+  ["01", "WORKCRAFT 이동", "BGK 소개 페이지에서 서비스와 가격을 확인한 뒤 WORKCRAFT 전용 시스템으로 이동합니다."],
+  ["02", "온라인 진단·예상견적", "WORKCRAFT에서 필요한 기능과 현재 불편을 입력하고 예상견적을 발행합니다."],
   ["03", "내부 검토·일정 확정", "예산, 업종, 구현 가능성과 의사결정자 참석 여부를 검토합니다."],
   ["04", "현장진단·협의", "엑셀·시트·문서·장부·기존 프로그램과 실제 담당자의 업무 순서를 확인합니다."],
   ["05", "최종 견적·계약", "최종 견적서, SOW, 운영 조건을 확정하고 계약서를 작성합니다."],
@@ -66,9 +66,9 @@ export default function BusinessPage() {
         </Link>
         <nav>
           <a href="#method">진행방식</a>
-          <a href="#diagnosis">온라인 진단</a>
+          <a href="#pricing">가격안내</a>
           <a href="#quality">품질원칙</a>
-          <a className="nav-cta" href="#diagnosis">예상 견적 확인</a>
+          <a className="nav-cta" href="https://workcraft.bgkcogito.co.kr/#/quote" target="_blank" rel="noreferrer">WORKCRAFT 예상견적</a>
         </nav>
       </header>
 
@@ -87,7 +87,7 @@ export default function BusinessPage() {
             <span>{workcraftPromotionOpen ? "현재 남은 프로모션" : "프로모션 상태"}</span>
             <div><strong>{workcraftPromotionOpen ? workcraftPromotion.remainingSlots : 0}</strong><em>/ {workcraftPromotion.totalSlots}개 기업</em></div>
             <p>{workcraftPromotionOpen ? "계약서 체결 및 계약금 확인 순으로 차감됩니다." : "선착순 프로모션이 마감되었습니다."}</p>
-            {workcraftPromotionOpen && <a className="button button-primary" href="#diagnosis">프로모션 견적 확인</a>}
+            {workcraftPromotionOpen && <a className="button button-primary" href="https://workcraft.bgkcogito.co.kr/#/quote" target="_blank" rel="noreferrer">프로모션 견적 시작</a>}
           </aside>
         </div>
         <div className="shell workcraft-promo-exclusions">
@@ -106,7 +106,7 @@ export default function BusinessPage() {
             기존 프로그램에 회사를 맞추는 것이 아니라, 회사가 일하는 방식에 맞춰 Web·App·Windows 업무 시스템과 AI 자동화를 구축합니다.
           </p>
           <div className="hero-buttons">
-            <a className="button button-primary" href="#diagnosis">온라인 진단 시작</a>
+            <a className="button button-primary" href="https://workcraft.bgkcogito.co.kr/#/quote" target="_blank" rel="noreferrer">WORKCRAFT 예상견적 시작</a>
             <a className="button button-ghost" href="#method">진행 절차 확인</a>
           </div>
           <p className="hero-policy">WORKCRAFT는 일반 소비자용 완제품 판매가 아닌 B2B 유료 맞춤 구축 서비스입니다.</p>
@@ -184,14 +184,14 @@ export default function BusinessPage() {
         </div>
       </section>
 
-      <section id="diagnosis" className="workcraft-section diagnosis-section">
+      <section id="pricing" className="workcraft-section pricing-guide-section">
         <div className="shell">
           <div className="section-intro centered narrow">
-            <p className="kicker">ONLINE DIAGNOSIS & ESTIMATE</p>
-            <h2>필요한 범위를 선택하고<br />예상 견적을 먼저 확인하세요.</h2>
-            <p>WORKCRAFT CORE·CONNECT·SUITE 3개 구축 패키지와 추가 기능의 시장 참고 평균값을 기준으로 예상 금액과 기간을 산출합니다. 현장진단 전 예산과 범위를 확인하는 1차 도구입니다.</p>
+            <p className="kicker">PACKAGE & OPTION GUIDE</p>
+            <h2>구축 시작가와 추가 기능을<br />한눈에 확인하세요.</h2>
+            <p>BGK 홈페이지에서는 서비스와 가격 기준만 안내합니다. 실제 예상견적 발행과 신청 데이터 관리는 WORKCRAFT 전용 시스템에서 진행합니다.</p>
           </div>
-          <WorkcraftDiagnosis />
+          <WorkcraftPricingGuide />
         </div>
       </section>
 

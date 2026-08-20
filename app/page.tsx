@@ -38,6 +38,7 @@ const serviceLines = [
     action: "PAWU 공식 홈페이지",
     tone: "pawu",
     external: true,
+    guardianInstallPending: true,
   },
 ];
 
@@ -176,7 +177,12 @@ export default function Home() {
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                   <ul>{item.points.map((point) => <li key={point}>{point}</li>)}</ul>
-                  {item.external ? (
+                  {"guardianInstallPending" in item && item.guardianInstallPending ? (
+                    <div className="pawu-install-actions">
+                      <button type="button" className="pawu-install-pending" disabled>Google Play 보호자 앱 설치 · 출시 준비중</button>
+                      <a href={item.href} target="_blank" rel="noreferrer">PAWU 서비스 소개 →</a>
+                    </div>
+                  ) : item.external ? (
                     <a href={item.href} target="_blank" rel="noreferrer">{item.action} →</a>
                   ) : (
                     <Link href={item.href}>{item.action} →</Link>
