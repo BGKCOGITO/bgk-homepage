@@ -9,11 +9,11 @@ const serviceLines = [
   {
     eyebrow: "ENTERPRISE BUILD",
     name: "WORKCRAFT",
-    title: "기업의 업무를 직접 보고, 전용 시스템으로 구축합니다.",
-    text: "온라인 진단과 예상 견적을 시작으로 현장을 방문해 실제 업무를 확인한 뒤 Web·App·Windows 업무 시스템과 자동화를 설계합니다.",
-    points: ["현장진단형 맞춤 구축", "자동 예상견적", "개발·배포·운영관리"],
+    title: "기업의 실제 업무를 보고, 전용 시스템으로 구축합니다.",
+    text: "현장을 방문해 실제 업무를 확인한 뒤 Web·App·Windows 업무 시스템과 자동화를 기업별로 설계합니다.",
+    points: ["현장 확인 후 맞춤 설계", "유료 맞춤 구축", "개발·배포·운영관리"],
     href: "/business",
-    action: "WORKCRAFT 살펴보기",
+    action: "WORKCRAFT 자세히 보기",
     tone: "workcraft",
     external: false,
   },
@@ -57,7 +57,7 @@ export default function Home() {
         <div className="hero-grid-pattern" aria-hidden="true" />
         <div className="shell bgk2-hero-grid">
           <div className="bgk2-hero-copy">
-            <p className="kicker kicker-light">BGK · BUSINESS TECHNOLOGY COMPANY</p>
+            <p className="kicker kicker-light">BGK BUSINESS TECHNOLOGY</p>
             <h1>
               현장의 문제를 이해하고,
               <br />
@@ -65,16 +65,16 @@ export default function Home() {
             </h1>
             <p>
               BGK는 기업 맞춤 구축사업 WORKCRAFT와 자체 제품 DELIVO·PAWU를 직접 개발·운영합니다.
-              설명만 하는 컨설팅이 아니라 기획, 개발, 배포와 운영까지 직접 수행합니다.
+              말로만 제안하는 컨설팅이 아니라 기획, 개발, 배포와 운영까지 직접 수행합니다.
             </p>
             <div className="hero-buttons">
-              <Link className="button button-primary" href="/business#diagnosis">WORKCRAFT 온라인 진단</Link>
+              <Link className="button button-primary" href="/business">WORKCRAFT 자세히 보기</Link>
               <a className="button button-ghost-light" href="#services">BGK 사업 보기</a>
             </div>
             <div className="bgk2-hero-facts">
               <div><strong>3</strong><span>사업 라인</span></div>
               <div><strong>4</strong><span>구축 단계</span></div>
-              <div><strong>1</strong><span>기획부터 운영까지</span></div>
+              <div><strong>직접</strong><span>기획·개발·운영</span></div>
             </div>
           </div>
 
@@ -90,6 +90,35 @@ export default function Home() {
           </aside>
         </div>
       </section>
+
+      {workcraftPromotionOpen && (
+        <section className="bgk2-home-promo" aria-label="WORKCRAFT 출시 프로모션">
+          <div className="shell bgk2-home-promo-grid">
+            <div className="bgk2-home-promo-copy">
+              <span className="bgk2-home-promo-label">WORKCRAFT 출시 프로모션</span>
+              <h2>{workcraftPromotion.title}</h2>
+              <strong>{workcraftPromotion.benefit}</strong>
+              <p>
+                유료 맞춤 구축 계약 기업을 대상으로, 최종 계약서에 포함되는 추가 기능 1개의 BGK 개발비를 지원합니다.
+                기본 구축 패키지 비용 전체를 무료로 제공하는 프로모션은 아니며, 제외 항목은 명확하게 고지합니다.
+              </p>
+              <div className="bgk2-home-promo-points">
+                {workcraftPromotion.eligibility.map((item) => <span key={item}>{item}</span>)}
+              </div>
+            </div>
+            <aside className="bgk2-home-promo-count">
+              <span>현재 남은 프로모션</span>
+              <div><strong>{workcraftPromotion.remainingSlots}</strong><em>/ {workcraftPromotion.totalSlots}개 기업</em></div>
+              <p>계약서 체결 및 계약금 확인 순서로 차감됩니다.</p>
+              <Link className="button button-primary" href="/business">프로모션 상세 보기</Link>
+            </aside>
+          </div>
+          <div className="shell bgk2-home-promo-note">
+            <b>제외 항목</b>
+            <p>기본 구축 패키지 비용, 월 유지관리비, 제3자 비용, 표준 범위를 넘어서는 별도 맞춤 요구사항, 장거리 현장진단 실비, 다른 할인과의 중복 적용은 제외됩니다.</p>
+          </div>
+        </section>
+      )}
 
       <section className="credential-bar">
         <div className="shell credential-grid">
@@ -135,7 +164,7 @@ export default function Home() {
             <div className="section-intro centered narrow">
               <p className="kicker">BGK BUSINESS</p>
               <h2>각 사업이 해결하는 문제를<br />명확하게 구분했습니다.</h2>
-              <p>같은 설명을 반복하지 않고, 고객이 필요한 서비스와 제품을 바로 찾을 수 있도록 구성했습니다.</p>
+              <p>고객이 필요한 서비스와 제품을 바로 찾을 수 있도록 핵심만 간결하게 정리했습니다.</p>
             </div>
             <div className="bgk2-service-grid">
               {serviceLines.map((item) => (
@@ -144,13 +173,6 @@ export default function Home() {
                     <span>{item.eyebrow}</span>
                     <b>{item.name}</b>
                   </div>
-                  {item.name === "WORKCRAFT" && workcraftPromotionOpen && (
-                    <div className="bgk2-promo-mini">
-                      <span>출시 프로모션</span>
-                      <strong>추가 기능 1개 개발비 100% 지원</strong>
-                      <b>잔여 {workcraftPromotion.remainingSlots}개사</b>
-                    </div>
-                  )}
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                   <ul>{item.points.map((point) => <li key={point}>{point}</li>)}</ul>
@@ -171,25 +193,39 @@ export default function Home() {
           <div className="bgk2-workcraft-panel">
             <div>
               <p className="kicker kicker-light">BGK WORKCRAFT</p>
-              <h2>전화로 묻지 않습니다.<br />현장에서 보고 설계합니다.</h2>
+              <h2>엑셀·문서 업무를<br />전용 시스템으로 바꿉니다.</h2>
               <p>
-                엑셀, 시트, 문서와 담당자의 실제 업무를 확인한 뒤 회사에 맞는 시스템을 구축합니다.
-                온라인 진단에서 패키지와 기능을 선택하면 예상 견적을 먼저 확인할 수 있습니다.
+                현장에서 실제 업무를 확인한 뒤 회사에 맞는 시스템을 구축합니다.
+                Web만 필요한 회사부터 App·Windows까지 함께 필요한 회사까지 단계별로 선택할 수 있습니다.
               </p>
               <p className="bgk2-workcraft-clarity">WORKCRAFT는 고객사별 계약에 따라 진행하는 유료 맞춤 개발·구축 서비스입니다.</p>
-              {workcraftPromotionOpen && (
-                <div className="bgk2-workcraft-promo">
-                  <span>{workcraftPromotion.title}</span>
-                  <strong>{workcraftPromotion.benefit}</strong>
-                  <p>현재 잔여 <b>{workcraftPromotion.remainingSlots}</b> / {workcraftPromotion.totalSlots}개 기업 · 기본 구축비와 제3자 비용 등은 제외</p>
-                </div>
-              )}
-              <Link className="button button-primary" href="/business">화면 예시·예상 견적 보기</Link>
+              <Link className="button button-primary" href="/business">WORKCRAFT 상세 페이지</Link>
             </div>
             <div className="bgk2-package-list">
-              <article><span>CORE</span><strong>Web</strong><b>390만원~</b></article>
-              <article><span>CONNECT</span><strong>Web + App</strong><b>690만원~</b></article>
-              <article><span>SUITE</span><strong>Web + App + Windows</strong><b>990만원~</b></article>
+              <article>
+                <span>CORE</span>
+                <div>
+                  <strong>Web 구축형</strong>
+                  <small>사내 업무용 웹 시스템</small>
+                </div>
+                <b>390만원~</b>
+              </article>
+              <article>
+                <span>CONNECT</span>
+                <div>
+                  <strong>Web + App 구축형</strong>
+                  <small>관리자 웹 + Android 앱 1종</small>
+                </div>
+                <b>690만원~</b>
+              </article>
+              <article>
+                <span>SUITE</span>
+                <div>
+                  <strong>Web + App + Windows 구축형</strong>
+                  <small>통합 운영환경 구축</small>
+                </div>
+                <b>990만원~</b>
+              </article>
             </div>
           </div>
         </Reveal>
@@ -236,7 +272,7 @@ export default function Home() {
         <dl>
           <div><dt>대표</dt><dd>{site.representative}</dd></div>
           <div><dt>사업자등록번호</dt><dd>{site.businessNumber}</dd></div>
-          <div><dt>행정 문의</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+          <div><dt>행정 문의</dt><dd>{site.email}</dd></div>
           <div><dt>주소</dt><dd>{site.address}</dd></div>
         </dl>
         <div className="footer-links">

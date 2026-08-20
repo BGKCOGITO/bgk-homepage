@@ -36,7 +36,7 @@ export default function Header() {
           {items.map(([label, href]) => (
             <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>
           ))}
-          <a className="nav-cta" href="/business#diagnosis" onClick={() => setOpen(false)}>온라인 진단</a>
+          <a className="nav-cta" href="/business" onClick={() => setOpen(false)}>WORKCRAFT 보기</a>
         </nav>
       </div>
     </header>

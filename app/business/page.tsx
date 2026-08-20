@@ -75,10 +75,10 @@ export default function BusinessPage() {
       <section className={`workcraft-promo-banner ${workcraftPromotionOpen ? "open" : "closed"}`} aria-label="WORKCRAFT 출시 프로모션">
         <div className="shell workcraft-promo-grid">
           <div className="workcraft-promo-copy">
-            <span className="workcraft-promo-label">LAUNCH PROMOTION</span>
+            <span className="workcraft-promo-label">WORKCRAFT 선착순 프로모션</span>
             <p>{workcraftPromotion.title}</p>
             <h2>{workcraftPromotion.benefit}</h2>
-            <strong>{workcraftPromotion.benefitDetail}</strong>
+            <strong>유료 구축 계약 기업 대상 · 추가 기능 1개 개발비 지원</strong>
             <div className="workcraft-promo-eligibility">
               {workcraftPromotion.eligibility.map((item) => <span key={item}>✓ {item}</span>)}
             </div>
@@ -86,12 +86,12 @@ export default function BusinessPage() {
           <aside className="workcraft-promo-count">
             <span>{workcraftPromotionOpen ? "현재 남은 프로모션" : "프로모션 상태"}</span>
             <div><strong>{workcraftPromotionOpen ? workcraftPromotion.remainingSlots : 0}</strong><em>/ {workcraftPromotion.totalSlots}개 기업</em></div>
-            <p>{workcraftPromotionOpen ? "계약 확정 순으로 차감됩니다." : "선착순 프로모션이 마감되었습니다."}</p>
+            <p>{workcraftPromotionOpen ? "계약서 체결 및 계약금 확인 순으로 차감됩니다." : "선착순 프로모션이 마감되었습니다."}</p>
             {workcraftPromotionOpen && <a className="button button-primary" href="#diagnosis">프로모션 견적 확인</a>}
           </aside>
         </div>
         <div className="shell workcraft-promo-exclusions">
-          <b>프로모션 제외 항목</b>
+          <b>제외 항목</b>
           <div>{workcraftPromotion.exclusions.map((item) => <span key={item}>· {item}</span>)}</div>
           <small>{workcraftPromotion.countRule}</small>
         </div>
@@ -109,12 +109,7 @@ export default function BusinessPage() {
             <a className="button button-primary" href="#diagnosis">온라인 진단 시작</a>
             <a className="button button-ghost" href="#method">진행 절차 확인</a>
           </div>
-          <p className="hero-policy">개발 요구사항은 전화·카카오톡·메일로 상담하지 않습니다. 일정 확인과 행정 안내에만 연락수단을 사용합니다.</p>
-          <div className="legacy-workflow-chips" aria-label="WORKCRAFT가 줄이는 반복업무">
-            <span>엑셀 관리 X</span>
-            <span>시트 관리 X</span>
-            <span>문서 사용 X</span>
-          </div>
+          <p className="hero-policy">WORKCRAFT는 일반 소비자용 완제품 판매가 아닌 B2B 유료 맞춤 구축 서비스입니다.</p>
         </div>
 
         <aside className="workcraft-hero-panel" aria-label="BGK WORKCRAFT 핵심 원칙">
@@ -131,7 +126,7 @@ export default function BusinessPage() {
 
       <section className="service-clarity shell" aria-label="WORKCRAFT 서비스 안내">
         <strong>WORKCRAFT는 고객사별 계약으로 진행하는 유료 맞춤 개발·구축 서비스입니다.</strong>
-        <p>완성형 범용 제품을 일반 사용자에게 판매·배포하는 방식이 아니라, 실제 업무를 분석해 회사별 시스템을 설계합니다. 출시 프로모션은 전체 구축을 무료로 제공하는 것이 아니라, 유료 구축 계약 시 최종 계약에 포함되는 추가 기능 1개의 BGK 개발비를 지원하는 혜택입니다.</p>
+        <p>출시 프로모션은 전체 구축을 무료로 제공하는 것이 아니라, 유료 구축 계약 시 최종 계약에 포함되는 추가 기능 1개의 BGK 개발비를 지원하는 혜택입니다.</p>
       </section>
 
       <section className="trust-strip">

@@ -456,7 +456,6 @@ export default function WorkcraftDiagnosis() {
             </button>
           ))}
         </div>
-        <p className="package-example-note">DELIVO와 PAWU는 BGK의 자체 운영 제품이며, 위 예시는 플랫폼 연결 구조를 설명하기 위한 참고입니다. 동일한 전체 기능을 복제하는 가격을 의미하지 않습니다.</p>
       </section>
 
       <section className="diagnosis-block package-examples-block" aria-labelledby="package-examples-title">
