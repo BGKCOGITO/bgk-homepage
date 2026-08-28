@@ -1864,3 +1864,89 @@ main { overflow: clip; }
   .quality-limit-banner{padding:24px;grid-template-columns:1fr;gap:14px}
   .bgk2-final-contact-panel{padding:30px 23px}
 }
+
+
+/* 2026-08-28 BGK social contribution: low-key company introduction block */
+.bgk2-social-contribution{
+  display:grid;
+  grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);
+  gap:28px;
+  margin-top:18px;
+  padding:30px 32px;
+  border:1px solid #dfe7ef;
+  border-radius:22px;
+  background:#f3f6f9;
+}
+.bgk2-social-contribution-copy>span{
+  display:block;
+  color:#6f8092;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.bgk2-social-contribution-title{
+  margin:7px 0 0!important;
+  color:#2f6cae!important;
+  font-size:12px!important;
+  font-weight:850;
+}
+.bgk2-social-contribution-copy h3{
+  margin:10px 0 12px;
+  color:var(--navy-950);
+  font-size:24px;
+  line-height:1.42;
+  letter-spacing:-.028em;
+}
+.bgk2-social-contribution-copy>p:last-of-type{
+  max-width:720px;
+  margin:0;
+  color:#617184;
+  font-size:14px;
+  line-height:1.78;
+}
+.bgk2-social-contribution-areas{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:18px;
+}
+.bgk2-social-contribution-areas b{
+  padding:8px 11px;
+  border:1px solid #dbe4ed;
+  border-radius:999px;
+  background:#fff;
+  color:#3d5064;
+  font-size:11px;
+  font-weight:800;
+}
+.bgk2-social-contribution-note{
+  align-self:stretch;
+  padding:22px 24px;
+  border-left:1px solid #d7e0e9;
+}
+.bgk2-social-contribution-note strong{
+  display:block;
+  color:#23384f;
+  font-size:14px;
+  line-height:1.65;
+}
+.bgk2-social-contribution-note p{
+  margin:10px 0 0;
+  color:#68798a;
+  font-size:12px;
+  line-height:1.75;
+}
+.bgk2-social-contribution-note small{
+  display:block;
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid #dde4eb;
+  color:#8794a1;
+  font-size:11px;
+  line-height:1.65;
+}
+@media(max-width:800px){
+  .bgk2-social-contribution{grid-template-columns:1fr;padding:24px;gap:20px}
+  .bgk2-social-contribution-note{padding:20px 0 0;border-left:0;border-top:1px solid #d7e0e9}
+  .bgk2-social-contribution-copy h3{font-size:22px}
+}

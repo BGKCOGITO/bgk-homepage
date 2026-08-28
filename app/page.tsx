@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Reveal from "@/components/Reveal";
 import { site } from "@/data/site";
 import { workcraftPromotion, workcraftPromotionOpen } from "@/data/workcraftPromotion";
+import { socialContribution } from "@/data/socialContribution";
 
 const serviceLines = [
   {
@@ -179,6 +180,25 @@ export default function Home() {
               <ul><li>DELIVO 택배 운영</li><li>PAWU 반려동물 의료 연결</li><li>실사용 기반 제품 개선</li></ul>
             </article>
           </div>
+
+          <aside id="social-contribution" className="bgk2-social-contribution" aria-labelledby="social-contribution-title">
+            <div className="bgk2-social-contribution-copy">
+              <span>{socialContribution.label}</span>
+              <p className="bgk2-social-contribution-title">{socialContribution.title}</p>
+              <h3 id="social-contribution-title">{socialContribution.headline}</h3>
+              <p>{socialContribution.description}</p>
+              <div className="bgk2-social-contribution-areas" aria-label="사회공헌 분야">
+                {socialContribution.areas.map((area) => <b key={area}>{area}</b>)}
+              </div>
+            </div>
+            <div className="bgk2-social-contribution-note">
+              <strong>{socialContribution.status}</strong>
+              <p>{socialContribution.privacy}</p>
+              {socialContribution.activities.length === 0 && (
+                <small>실제 지원 활동이 시작되면 이 영역에 활동 기록을 순차적으로 남깁니다.</small>
+              )}
+            </div>
+          </aside>
         </Reveal>
       </section>
 
