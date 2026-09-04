@@ -15,3 +15,10 @@ npm install
 npm run build
 vercel --prod
 ```
+
+## 2026-09-04 추가 반영
+- `/business`를 광고 전환·문의 중심 WORKCRAFT 랜딩페이지로 전면 개편
+- 연락처 없이 가격부터 확인하는 30초 예상견적으로 직접 연결
+- 카카오톡·전화 문의 및 모바일 하단 고정 CTA 추가
+- 기존 상세 기능 가격표 제거 및 WorkCraft 실제 견적 기준으로 일원화
+- DELIVO·PAWU 구축사례와 간편견적 실제 화면 추가

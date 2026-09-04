@@ -5,7 +5,7 @@ BGK 공식 홈페이지와 기업 현장진단형 맞춤 구축 서비스 `BGK W
 ## 주요 구성
 
 - `/` — BGK 기업 홈페이지
-- `/business` — WORKCRAFT 서비스·프로모션·가격 안내. 예상견적은 `https://workcraft.bgkcogito.co.kr/#/quote`로 이동
+- `/business` — 광고 전환·문의 중심 WORKCRAFT 랜딩페이지. 연락처 없이 30초 예상견적을 먼저 확인하고 카카오·전화 문의 가능
 - `/privacy` — 개인정보처리방침
 - `/api/business-inquiry` — Resend 기반 현장진단 신청 접수 API
 
@@ -33,3 +33,10 @@ BGK_INQUIRY_TO=bgkcogito@naver.com
 - 실제 지원 활동 전에는 0원/0건을 전면에 노출하지 않습니다.
 - 실제 활동이 시작되면 지원 지역·내용·금액만 간단히 기록하고 대상자 개인정보는 공개하지 않습니다.
 - 기존 BGK Support Supabase는 내부 관리 DB로 유지하며 홈페이지와의 실데이터 연결은 첫 활동 등록 단계에서 진행합니다.
+
+## 2026-09-04 WORKCRAFT 전환 랜딩
+- `/business`를 장문 서비스 소개형에서 문의·견적 전환형 랜딩페이지로 재구성했습니다.
+- `30초 예상견적`, `카카오 문의`, `전화 상담`을 첫 화면과 모바일 고정 버튼에 배치했습니다.
+- 상세 추가기능 가격표를 제거하고 WORKCRAFT 실제 간편견적 기준으로 가격 확인을 일원화했습니다.
+- DELIVO·PAWU 실제 구축사례와 WORKCRAFT 3단계 견적 화면을 추가했습니다.
+- 상세 내용은 `WORKCRAFT_CONVERSION_LANDING_UPDATE_20260904.md`를 확인합니다.
